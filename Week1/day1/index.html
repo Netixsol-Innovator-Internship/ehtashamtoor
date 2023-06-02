@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <center>
-        <!-- Headings from 1 to 6 -->
-      <h2>My first netixsol SKELETON HTML PAGE</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <center>
+    <!-- Headings from 1 to 6 -->
+    <h2>My first netixsol SKELETON HTML PAGE</h1>
       <h2>My first netixsol SKELETON HTML PAGE</h2>
       <h3>My first netixsol SKELETON HTML PAGE</h3>
       <h4>My first netixsol SKELETON HTML PAGE</h4>
@@ -19,7 +21,7 @@
       <!-- Paragraph -->
       <p>
         my first loremipsum<cite>Star wars</cite> paragraph Lorem ipsum<q>hello</q> dolor sit amet consectetur
-        adipisicing elit. Molestiae, ut reiciendis.<br/> Aut ipsum officiis
+        adipisicing elit. Molestiae, ut reiciendis.<br /> Aut ipsum officiis
         perferendis tempora<abbr title="World Health Organization">WHO</abbr> rem labore autem cupiditate.
       </p>
 
@@ -29,7 +31,7 @@
       <!-- Keyboard -->
       <p>
         Press
-        <kbd><b>Ctrl</kbd><kbd>C</b></kbd>  to copy text
+        <kbd><b>Ctrl</kbd><kbd>C</b></kbd> to copy text
       </p>
 
       <!-- Address -->
@@ -37,7 +39,7 @@
       Written By
       <a href="https:www.google.com">Google here</a>
 
-      <br/>
+      <br />
 
       <!-- Ordered list -->
 
@@ -47,7 +49,7 @@
         <li>hello here</li>
         <li>hello here</li>
       </ol>
-      <!-- UnOrdered list and data--> 
+      <!-- UnOrdered list and data-->
 
       <ul>
         <li>hello here <data value="2023">Beef</data></li>
@@ -63,11 +65,36 @@
         <dt>Milk</dt>
         <dd>Defintiion</dd>
       </dl>
-<!-- Horizontol line -->
-      <hr/>
+      <!-- Horizontol line -->
+      <hr />
+      <!-- Code -->
+      <p>
+        The CSS
+        <code>backgroundColor</code>
+        property defines the background color of an element
+      </p>
 
 
-      <div>
+      <!-- span -->
+      <p>
+        Hello my name is
+        <span> TOor</span>
+      </p>
+
+      <!-- Definition -->
+      <p>
+        <dfn>HTML </dfn>
+        is the standard markup language.
+      </p>
+
+      <!-- Deleted and inserted text -->
+      <p>
+        My favourite color is
+        <del>blue</del>
+        <ins>red</ins>!
+      </p>
+
+
       <table border="1">
         <tr>
           <th>Name</th>
@@ -85,26 +112,27 @@
           <td>Islamabad</td>
         </tr>
       </table>
-    </div>
-      <br/>
+      </div>
+      <br />
 
 
       <!-- Mark -->
 
       <p>
         donot forget to <mark>fasten your seat belt</mark>
-        <pre>heloo there i am pre tag</pre>
+      <pre>heloo there i am pre tag</pre>
       </p>
 
-
+      <!-- bdo -->
       <p>
-        <bdo>This para will go left to rigth</bdo>
+        <bdo dir="rtl">This para will go left to rigth</bdo>
       </p>
 
-<!-- iframe tag -->
-      <iframe src="https://www.facebook.com" title="W3Schools Free Online Web Tutorials" width="900px" height="300px" frameborder="0" allowtransparency="true"></iframe>
+      <!-- iframe tag -->
+      <iframe src="https://www.facebook.com" title="W3Schools Free Online Web Tutorials" width="900px" height="300px"
+        frameborder="0" allowtransparency="true"></iframe>
 
-      <br/>
+      <br />
       <!-- Object and param -->
       <object data="2.png" width="300" height="400">
         <param name="height" value="200">
@@ -112,9 +140,50 @@
 
       <!-- embed -->
       <embed src="2.png" type="image/png" width="300" height="300" />
-      <br/>
+      <br />
 
-      
+      <!-- Misspelled Word -->
+      <p>
+        It is a
+        <u>mispeled</u>
+        Text.
+      </p>
+
+      <!-- variable -->
+      <p>
+        The area of triangle is :1/2 x
+        <var>b</var> x <var>h</var> where <var>b</var> is the base and
+        <var>h</var>
+        is vertical height.
+      </p>
+
+
+      <!-- wbr -->
+      <p>
+        A very loooooooooooooooo
+        oooooooooooooooooooooooooooooooooo oooooooooooooooooooooo
+        oooooooooooooooooooooo
+        <wbr />
+      wordthatbreaksmallscreens
+      </p>
+
+      <!--Below are some Semantic Elements -->
+      <header></header>
+      <main></main>
+      <nav></nav>
+      <aside></aside>
+      <footer></footer>
+      <section></section>
+      <article></article>
+
+      <!-- Details Tag -->
+      <details>
+        <summary>Toor center</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus placeat sunt possimus, laudantium ut natus
+          non voluptate illum sapiente quos! </p>
+      </details>
+
       <form action="formSubmission.html" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" />
@@ -124,15 +193,16 @@
         <label for="number">Age:</label>
         <input type="number" id="number" name="number" />
         <br>
-        <br/>
+        <br />
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" />
-        <br/>
-        <br/>
+        <br />
+        <br />
 
         <input type="submit" value="Submit" />
       </form>
-    </center>
-  </body>
+  </center>
+</body>
+
 </html>
