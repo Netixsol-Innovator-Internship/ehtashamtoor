@@ -1,15 +1,21 @@
 body {
   background: #b9ccd3;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 }
 .wrapper {
-  width: fit-content;
-  margin: auto;
+  height: 100vh;
+  /* width: fit-content; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerBox {
   padding: 1rem 1.1rem;
   box-shadow: 1px 2px 18px 0.3px #b0b0b0;
-  border-radius: 1rem;
   background: white;
-  text-align: center;
+  border-radius: 1rem;
 }
 
 #heading {
@@ -33,4 +39,11 @@ body {
   width: 16rem;
   margin: auto;
   font-size: 0.8rem;
+}
+
+
+@media screen and (max-width: 300px){
+    .wrapper{
+        width: fit-content;
+    }
 }
