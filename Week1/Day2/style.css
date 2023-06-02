@@ -1,0 +1,36 @@
+body {
+  background: #b9ccd3;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.wrapper {
+  width: fit-content;
+  margin: auto;
+  padding: 1rem 1.1rem;
+  box-shadow: 1px 2px 18px 0.3px #b0b0b0;
+  border-radius: 1rem;
+  background: white;
+  text-align: center;
+}
+
+#heading {
+  margin: 1rem auto;
+  width: 17rem;
+}
+#imgBox {
+  background-color: rgb(41 138 243);
+  padding: 4rem 0rem;
+  text-align: center;
+  width: 19rem;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+#qrcode {
+  width: 10rem;
+}
+.desc {
+  color: lightslategray;
+  width: 16rem;
+  margin: auto;
+  font-size: 0.8rem;
+}
