@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/c79c5697c5.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style.css" rel="stylesheet" />
+    <title>PW SKILLS - Marvellous Designs</title>
+  </head>
+  <body>
+    <!-- Navbar sarts here -->
+    <nav class="bg-secondary">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center">
+          <div class="flex flex-1 items-center">
+            <div class="flex flex-shrink-0 items-center">
+              <!-- center icon for small screen -->
+              <a
+                href="index.html"
+                class="text-primary font-bold text-lg hover:text-accentColor cursor-pointer"
+                >PW SKILLS</a
+              >
+            </div>
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
+                  >Home</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
+                  >About</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
+                  >Contact Us</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- login signup buttton large screen -->
+          <div class="hidden sm:block">
+            <button
+              class="bg-primary hover:bg-accentColor p-2 rounded-md font-semibold"
+            >
+              Login/Signup
+            </button>
+          </div>
+
+          <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-controls="mobile_menu"
+              aria-expanded="false"
+              id="toggleButton"
+            >
+              <span class="sr-only">Open main menu</span>
+              <!--
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+              <svg
+                class="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <!--
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+              <svg
+                class="hidden h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="hidden" id="mobile_menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >About</a
+          >
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Contact Us</a
+          >
+
+          <div class="w-full">
+            <a href="#">
+              <button
+                class="bg-primary hover:bg-accentColor p-2 rounded-md font-semibold w-full"
+              >
+                Login/Signup
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar ends here -->
+
+    <!-- Banner section Image starts-->
+
+    <div class="w-full h-auto">
+      <img
+        src="Images/desktopBanner.jpg"
+        alt="desktop banner image"
+        class="object-cover hidden sm:block"
+      />
+      <img
+        src="Images/mobileBanner.jpg"
+        alt="mobile banner image"
+        class="object-cover sm:hidden block"
+      />
+    </div>
+    <!-- Banner section Image ends -->
+
+    <!-- Students Section Starts here -->
+
+    <section class="mt-4">
+      <h1 class="text-primary text-3xl md:text-5xl text-center font-bold">
+        “Pure Hardwork, No Shortcuts!”
+      </h1>
+      <hr class="w-[8rem] mt-4 border-t-[4px] m-auto block border-secondary" />
+
+      <div class="flex justify-around items-center flex-wrap gap-4 my-10">
+        <div class="w-auto flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/statistics/books-icon.svg"
+            alt="booksIcon"
+            class="w-44"
+          />
+          <h1 class="text-4xl font-bold">600+</h1>
+          <div class="text-center text-3xl text-gray-500 mt-3 font-semibold">
+            <h3>Different Courses</h3>
+          </div>
+        </div>
+        <div class="w-auto flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/statistics/student-icon.svg"
+            alt="studentIcon"
+            class="w-44"
+          />
+          <h1 class="text-4xl font-bold">700,000+</h1>
+          <div class="text-center text-3xl text-gray-500 mt-3 font-semibold">
+            <h3>Students Enrolled</h3>
+          </div>
+        </div>
+        <div class="w-auto flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/statistics/credit-card-icon.svg"
+            alt="creditcard"
+            class="w-44"
+          />
+          <h1 class="text-4xl font-bold">10,000+</h1>
+          <div class="text-center text-3xl text-gray-500 mt-3 font-semibold">
+            <h3>Successful Transition</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Students Section ends here -->
+
+    <!-- Products Section Starts here -->
+
+    <section class="mt-8 h-auto w-100 flex flex-col flex-wrap items-center">
+      <h1 class="text-primary text-3xl md:text-5xl text-center font-bold">
+        Our Products
+      </h1>
+      <!-- <hr class="w-[8rem] mt-4 border-t-[4px] m-auto block border-secondary" /> -->
+
+      <div
+        class="w-[90%] h-auto flex flex-wrap justify-around items-center gap-4 my-10"
+      >
+        <div class="w-80 flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/products/neurolab-icon.svg"
+            alt="neurolab"
+            class="m-auto"
+          />
+          <h2 class="text-2xl font-bold">PWSKILLs Lab</h2>
+          <p class="text-xl text-gray-500 text-center mt-4">
+            Supercharge your project development with our robust lab.
+          </p>
+        </div>
+        <div class="w-80 flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/products/jobPortal-icon.svg"
+            alt="jobPortal"
+            class="m-auto"
+          />
+          <h2 class="text-2xl font-bold">Job Portal</h2>
+          <p class="text-xl text-gray-500 text-center mt-4">
+            Use exceptional templates for a stand-out resume minus the sign up
+            process.
+          </p>
+        </div>
+        <div class="w-80 flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/products/Internship-icon.svg"
+            alt="Internship"
+            class="m-auto"
+          />
+          <h2 class="text-2xl font-bold">Experience Portal</h2>
+          <p class="text-xl text-gray-500 text-center mt-4">
+            PW Skills's self-paced experience portal prioritises hands-on
+            training with 570+ internship projects.
+          </p>
+        </div>
+        <div class="w-80 flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/products/affilitatePortal-icon.svg"
+            alt="affilitatePortal"
+            class="m-auto"
+          />
+          <h2 class="text-2xl font-bold">Become an Afilitate</h2>
+          <p class="text-xl text-gray-500 text-center mt-4">
+            Explore affiliate marketing opportunities with PW Skills and attain
+            financial freedom.
+          </p>
+        </div>
+        <div class="w-80 flex flex-col items-center">
+          <img
+            src="https://pwskills.com/images/landing-page/products/halloffame-icon.svg"
+            alt="halloffame"
+            class="m-auto"
+          />
+          <h2 class="text-2xl font-bold">Hall of Fame</h2>
+          <p class="text-xl text-gray-500 text-center mt-4">
+            Our student placements and 100K+ career transitions speak volumes
+            about our courses.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section ends here -->
+
+    <!-- Footer Section starts here -->
+
+    <footer
+      class="flex flex-col items-start justify-around md:flex-row bg-secondary text-white py-6 px-5"
+    >
+      <!-- Section 1 -->
+      <div class="flex flex-col gap-5 my-6">
+        <h1 class="text-2xl">LOGO HERE</h1>
+        <hr
+          class="w-[8rem] border-t-[3px] m-auto block invisible border-primary"
+        />
+        <div class="flex items-center gap-3 text-1xl font-bold">
+          <div>
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              class="Footer_footer_location_marker__680ja"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M477.5 536.3L135.9 270.7l-27.5-21.4 27.6 21.5V792h752V270.8L546.2 536.3a55.99 55.99 0 0 1-68.7 0z"
+              ></path>
+              <path
+                d="M876.3 198.8l39.3 50.5-27.6 21.5 27.7-21.5-39.3-50.5z"
+              ></path>
+              <path
+                d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-94.5 72.1L512 482 190.5 232.1h643zm54.5 38.7V792H136V270.8l-27.6-21.5 27.5 21.4 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5h.1l39.3 50.5-27.7 21.5z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex justify-between">
+            <h4>Email us:</h4>
+            <h5>
+              <a href="">support@xyz.com</a>
+            </h5>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-center text-1xl font-bold">
+          <div>
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              class="Footer_footer_location_marker__680ja"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M721.7 184.9L610.9 295.8l120.8 120.7-8 21.6A481.29 481.29 0 0 1 438 723.9l-21.6 8-.9-.9-119.8-120-110.8 110.9 104.5 104.5c10.8 10.7 26 15.7 40.8 13.2 117.9-19.5 235.4-82.9 330.9-178.4s158.9-213.1 178.4-331c2.5-14.8-2.5-30-13.3-40.8L721.7 184.9z"
+              ></path>
+              <path
+                d="M877.1 238.7L770.6 132.3c-13-13-30.4-20.3-48.8-20.3s-35.8 7.2-48.8 20.3L558.3 246.8c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l89.6 89.7a405.46 405.46 0 0 1-86.4 127.3c-36.7 36.9-79.6 66-127.2 86.6l-89.6-89.7c-13-13-30.4-20.3-48.8-20.3a68.2 68.2 0 0 0-48.8 20.3L132.3 673c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l106.4 106.4c22.2 22.2 52.8 34.9 84.2 34.9 6.5 0 12.8-.5 19.2-1.6 132.4-21.8 263.8-92.3 369.9-198.3C818 606 888.4 474.6 910.4 342.1c6.3-37.6-6.3-76.3-33.3-103.4zm-37.6 91.5c-19.5 117.9-82.9 235.5-178.4 331s-213 158.9-330.9 178.4c-14.8 2.5-30-2.5-40.8-13.2L184.9 721.9 295.7 611l119.8 120 .9.9 21.6-8a481.29 481.29 0 0 0 285.7-285.8l8-21.6-120.8-120.7 110.8-110.9 104.5 104.5c10.8 10.8 15.8 26 13.3 40.8z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex justify-between">
+            <h4>Call us:</h4>
+            <h5>
+              <a href="">+923018648980</a>
+            </h5>
+          </div>
+        </div>
+        <div>
+          <img src="https://pwskills.com/images/iso-9001-2015.svg" alt="badge">
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="flex flex-col gap-5 my-6">
+        <h1 class="text-2xl">PW SKILLS</h1>
+        <hr class="w-[8rem] border-t-[3px] block border-primary" />
+        <div class="flex gap-5">
+          <div class="flex flex-col gap-4 font-bold">
+            <p>
+              <a href="/about">About Us</a>
+            </p>
+            <p>
+              <a href="/Faq">FAQs</a>
+            </p>
+            <p>
+              <a href="/policy">Privacy policy</a>
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 font-bold">
+            <p>
+              <a href="/contact">Contact Us</a>
+            </p>
+            <p>
+              <a href="/jobassistance">Job Assistance</a>
+            </p>
+            <p>
+              <a href="/term&conditions">Terms and Conditons</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="flex flex-col gap-5 my-6">
+        <h1 class="text-2xl">Products</h1>
+        <hr class="w-[8rem] border-t-[3px] block border-primary" />
+        <div class="flex flex-col gap-4 text-1xl font-bold">
+          <p>
+            <a href="">PW Skills Lab</a>
+          </p>
+          <p>
+            <a href="">Job Portal</a>
+          </p>
+          <p>
+            <a href="">Experience portal</a>
+          </p>
+          <p>
+            <a href="">Become an affiliate</a>
+          </p>
+          <p>
+            <a href="">Hall of fame</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Footer Section ends here -->
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

@@ -4,15 +4,14 @@ body {
   text-align: center;
 }
 .wrapper {
-  height: 100vh;
-  /* width: fit-content; */
+  height: 97vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .innerBox {
-  padding: 1rem 1.1rem;
+  padding: 1rem 0.5rem;
   box-shadow: 1px 2px 18px 0.3px #b0b0b0;
   background: white;
   border-radius: 1rem;
@@ -20,30 +19,29 @@ body {
 
 #heading {
   margin: 1rem auto;
-  width: 17rem;
+  width: 15rem;
 }
 #imgBox {
   background-color: rgb(41 138 243);
-  padding: 4rem 0rem;
+  padding: 3.5rem 0rem;
   text-align: center;
-  width: 19rem;
+  width: 14rem;
   border-radius: 1rem;
   margin: auto;
 }
 
 #qrcode {
-  width: 10rem;
+  width: 5rem;
 }
 .desc {
   color: lightslategray;
-  width: 16rem;
+  width: 14rem;
   margin: auto;
   font-size: 0.8rem;
 }
 
-
-@media screen and (max-width: 300px){
-    .wrapper{
-        width: fit-content;
-    }
+@media screen and (max-width: 300px) {
+  .wrapper {
+    width: fit-content;
+  }
 }
