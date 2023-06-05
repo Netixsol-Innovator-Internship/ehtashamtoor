@@ -35,7 +35,7 @@ a.button:hover {
 }
 
 .wrapper {
-  max-width: 540px;
+  width: 62rem;
   height: 90vh;
   margin: 5vh auto 5vh auto;
   border-bottom-width: 70px;

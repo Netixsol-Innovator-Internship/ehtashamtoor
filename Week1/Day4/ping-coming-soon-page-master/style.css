@@ -1,0 +1,232 @@
+
+:root {
+  --blue: hsl(223, 87%, 63%);
+  /* Secondary Colors*/
+  --paleBlue: hsl(223, 100%, 88%);
+  --lightRed: hsl(354, 100%, 66%);
+  --lightBlue: hsl(223, 86%, 73%);
+  /* Neutral Colors*/
+  --gray: hsl(0, 0%, 59%);
+  --vDarkBlue: hsl(209, 33%, 12%);
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1.2rem;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 0;
+}
+
+.headerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.headerArea img {
+  margin-bottom: 2rem;
+}
+
+.headerArea h1 {
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.headerArea h1 span {
+  color: black;
+  font-weight: 700;
+}
+.headerArea h2 {
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 4rem;
+  width: auto;
+}
+
+#inputBox {
+  width: 22rem;
+}
+#email {
+  border-radius: 3rem;
+  border: 1px solid var(--gray);
+  padding: 0.9rem;
+  width: 100%;
+}
+#inputBox input::placeholder {
+  color: var(--paleBlue);
+  letter-spacing: 0.05rem;
+  opacity: 0.9;
+}
+
+#submitBtn {
+  border-radius: 3rem;
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: white;
+  box-shadow: 2px 3px 10px 0.5px var(--lightBlue);
+  cursor: pointer;
+}
+
+#submitBtn:hover {
+  background: var(--lightBlue);
+  border: 1px solid var(--lightBlue);
+}
+
+.errorMessage {
+  color: var(--lightRed);
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 20px;
+  visibility: hidden;
+  margin-top: 5px;
+  height: 17px;
+}
+
+.centerImage {
+  width: 33rem;
+  margin: auto;
+}
+
+.centerImage img {
+  width: 100%;
+}
+
+.socialIcons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.socialIcons a:hover{
+  background: var(--lightBlue);
+  border: 0.5px solid var(--lightBlue);
+}
+
+.socialIcons a:hover i{
+  color: white;
+}
+
+.socialIcons a i{
+  color: var(--blue);
+  font-size: 16px;
+}
+
+a{
+  text-decoration: none;
+}
+.socialIcons a {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid lightgray;
+}
+
+.footerContent{
+  margin: 3rem 0;
+}
+#footer {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#footer p {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+@media screen and (max-width: 768px) {
+  .headerArea h1 {
+    font-size: 1.8rem;
+  }
+  #inputBox {
+    width: 100%;
+  }
+  #submitBtn {
+    width: 100%;
+  }
+  .centerImage {
+    width: 23rem;
+  }
+  .errorMessage{
+    text-align: center;
+    width: 14rem;
+    margin: 2px auto;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .headerArea h1 {
+    font-size: 1.4rem;
+  }
+  #inputBox {
+    width: 100%;
+  }
+ 
+  .centerImage {
+    width: 18rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+    .headerArea h1 {
+      font-size: 1.4rem;
+    }
+    #inputBox {
+      width: 100%;
+      padding: 0 1rem;
+    }
+    #submitBtn {
+        margin: 0 1rem;
+    }
+    .centerImage {
+      width: 15rem;
+    }
+    #footer p {
+        font-size: 12px;
+    }
+  }
+
+
+
+
+  /* scrolbbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 2px;
+}
