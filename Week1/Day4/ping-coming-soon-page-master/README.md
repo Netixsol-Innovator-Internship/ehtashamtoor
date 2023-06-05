@@ -9,6 +9,7 @@ As for all the design should be responsive.
 COLORS ARE GIVEN IN THE TEMPLATE FILES. So I will use those.
 
 Live demo: deployed using surge.sh
+http://pingcomingsoonlandingpage.surge.sh/
 
 
 ****************************Standup Evening Meeting Content *****************************
