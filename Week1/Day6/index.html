@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Learn to Code Signup Page</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="textWrapper">
+          <p class="head">Learn to code by watching others</p>
+          <p class="para">
+            See how experienced developers solve problems in real-time. Watching
+            scripted tutorials is great, but understanding how developers think
+            is invaluable.
+          </p>
+        </div>
+        <div class="form">
+          <button class="tryBtn">
+            <span>Try it free 7 days</span> then $20/mo. thereafter
+          </button>
+          <div class="inputs">
+            <form id="myForm">
+              <div style="position: relative">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  id="firstNameInput"
+                  name="fname"
+                />
+                <i class="fa fa-exclamation-circle" data-id="fname"></i>
+                <p class="error" id="firstName">First Name cannot be left empty</p>
+              </div>
+              <div style="position: relative">
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id="lastNameInput"
+                  name="lname"
+                />
+                <i class="fa fa-exclamation-circle" data-id="lname"></i>
+                <p class="error" id="lastName">Last Name cannot be left empty</p>
+              </div>
+              <div style="position: relative">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  id="emailInput"
+                />
+                <i class="fa fa-exclamation-circle" data-id="emailIcon"></i>
+                <p class="error" id="emailerror">
+                  Email cannot be empty
+                </p>
+              </div>
+              <div style="position: relative">
+                <input type="password" placeholder="Password" id="passInput" autocomplete="off" />
+                <i class="fa fa-exclamation-circle" data-id="passIcon"></i>
+                <p class="error" id="passerror">Password cannot be left empty</p>
+              </div>
+              <div>
+                <button class="claimBtn" id="submitBtn" type="submit">
+                  Claim your free trial
+                </button>
+              </div>
+              <p class="terms">
+                By clicking the button, you are agreeing to our
+                <span>Terms and Services</span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

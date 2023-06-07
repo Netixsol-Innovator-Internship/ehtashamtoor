@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Lexend+Deca&family=Libre+Franklin&family=Open+Sans&family=Outfit&family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: hsl(248, 32%, 49%);
+  --red: hsl(0, 100%, 74%);
+  --green: hsl(154, 59%, 51%);
+  --gray: hsl(246, 25%, 77%);
+  --darkGray: hsl(249, 10%, 26%);
+
+  --lightgreen: hsl(154, 76%, 60%);
+}
+.borderRed{
+  border: 1px solid var(--red) !important;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("./images/bg-intro-desktop.png");
+  background-color: var(--red);
+}
+.container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.textWrapper {
+  flex: 1 1 50%;
+  color: white;
+}
+.head {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.para {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+}
+.form {
+  flex: 1 1 50%;
+}
+.tryBtn {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 3px 1px rgba(77, 77, 77, 0.5);
+}
+.tryBtn span {
+  font-weight: bold;
+}
+.inputs {
+  background-color: white;
+  padding: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 4px 1px rgba(77, 77, 77, 0.3);
+}
+.inputs form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.inputs input,
+button,
+p {
+  width: 100%;
+}
+.inputs input {
+  padding: 12px 15px;
+  border-radius: 5px;
+  border: 1px solid var(--gray);
+  font-weight: 600;
+  color: var(--darkGray);
+}
+.inputs input:focus {
+  outline: none;
+  border: 1px solid var(--gray);
+}
+.inputs button {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--green);
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  font-weight: 500;
+  border-radius: 10px;
+}
+.fa-exclamation-circle{
+  color: var(--red);
+  font-size: 1rem;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  display: none !important;
+}
+
+.error{
+  display: none;
+  color: var(--red);
+  font-size: 0.6rem;
+  font-style: italic;
+  text-align: right;
+}
+.claimBtn:hover{
+  background-color: var(--lightgreen);
+  cursor: pointer;
+}
+.terms {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gray);
+}
+.terms span {
+  color: var(--red);
+  font-weight: 700;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    display: block;
+  }
+  .textWrapper {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 350px) {
+  .head {
+    font-size: 1.5rem;
+  }
+  .para {
+    font-size: 0.8rem;
+    margin-top: 0rem;
+  }
+  .inputs {
+    padding: 15px;
+  }
+  .inputs button {
+    padding: 8px 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .head {
+    font-size: 1.5rem;
+  }
+  .para {
+    font-size: 0.8rem;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+  }
+  .inputs {
+    padding: 15px;
+  }
+  .inputs button {
+    padding: 8px 15px;
+  }
+}
+
+.display{
+  display: block !important;
+}
+
+.checked{
+  display: block !important;
+}
