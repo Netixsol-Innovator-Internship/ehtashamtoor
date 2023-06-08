@@ -15,7 +15,7 @@
 
   --lightgreen: hsl(154, 76%, 60%);
 }
-.borderRed{
+.borderRed {
   border: 1px solid var(--red) !important;
 }
 body {
@@ -58,6 +58,7 @@ body {
   color: white;
   border: none;
   border-radius: 10px;
+  font-size: 0.9rem;
   box-shadow: 1px 3px 1px rgba(77, 77, 77, 0.5);
 }
 .tryBtn span {
@@ -101,7 +102,7 @@ p {
   font-weight: 500;
   border-radius: 10px;
 }
-.fa-exclamation-circle{
+.fa-exclamation-circle {
   color: var(--red);
   font-size: 1rem;
   position: absolute;
@@ -110,14 +111,14 @@ p {
   display: none !important;
 }
 
-.error{
+.error {
   display: none;
   color: var(--red);
   font-size: 0.6rem;
   font-style: italic;
   text-align: right;
 }
-.claimBtn:hover{
+.claimBtn:hover {
   background-color: var(--lightgreen);
   cursor: pointer;
 }
@@ -153,6 +154,9 @@ p {
   .inputs button {
     padding: 8px 15px;
   }
+  .tryBtn {
+    padding: 15px 6rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -170,12 +174,15 @@ p {
   .inputs button {
     padding: 8px 15px;
   }
+  .tryBtn {
+    padding: 15px 60px;
+  }
 }
 
-.display{
+.display {
   display: block !important;
 }
 
-.checked{
+.checked {
   display: block !important;
 }

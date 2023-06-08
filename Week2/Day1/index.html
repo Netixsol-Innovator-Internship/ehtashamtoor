@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Age calculator Javascript</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="content">
+        <article class="formContent">
+          <form id="form" class="forms">
+            <!-- Day Fieldset -->
+            <fieldset class="formGroup" id="groupDay">
+              <legend class="formsTitle">Day</legend>
+              <label for="day" class="formsLabel label">Day</label>
+              <input
+                class="formInput"
+                id="day"
+                type="number"
+                name="day"
+                placeholder="DD"
+              />
+              <p class="errormessage"></p>
+            </fieldset>
+            <!-- Month  fieldset-->
+            <fieldset class="formGroup" id="groupMonth">
+              <legend class="formsTitle">Month</legend>
+              <label for="month" class="formsLabel label">Month</label>
+              <input
+                class="formInput"
+                id="month"
+                type="number"
+                name="month"
+                placeholder="MM"
+              />
+              <p class="errormessage"></p>
+            </fieldset>
+            <!-- Month fieldset-->
+            <fieldset class="formGroup" id="groupYear">
+              <legend class="formsTitle">Year</legend>
+              <label for="year" class="formsLabel label">Year</label>
+              <input
+                class="formInput"
+                id="year"
+                type="number"
+                name="year"
+                placeholder="YYYY"
+              />
+              <p class="errormessage"></p>
+            </fieldset>
+          </form>
+          <hr />
+          <!-- submit button for form -->
+          <fieldset class="forms__button">
+            <button
+              class="forms__button-image"
+              type="submit"
+              form="form"
+            >
+              <!-- <span class="--sr-only"></span> -->
+              <img src="assets/images/icon-arrow.svg" alt="subtmit-button" />
+            </button>
+          </fieldset>
+        </article>
+
+        <!-- the RESULT DESIGN -->
+        <article class="">
+          <p class="InfoPara">
+            <span class="purpleColor dateShow" id="year">-- </span>years
+          </p>
+          <p class="InfoPara">
+            <span class="purpleColor dateShow">-- </span>months
+          </p>
+          <p class="InfoPara">
+            <span class="purpleColor dateShow">-- </span>days
+          </p>
+        </article>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
