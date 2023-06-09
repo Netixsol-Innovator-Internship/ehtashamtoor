@@ -167,18 +167,23 @@ function calculateAge(day, month, year) {
   let ageMonths = today.getMonth() - birthdate.getMonth();
   let ageDays = today.getDate() - birthdate.getDate();
 
-  // console.log(ageYears, ageMonths. ageDays)
+  console.log(ageYears, ageMonths, ageDays)
 
   if (ageDays < 0) {
     // If the day of the birthdate is greater than the day of today, subtract one month from the age in months
     ageMonths--;
+    // console.log(ageMonths)
     ageDays += new Date(year, month, 0).getDate(); // Get the number of days in the previous month
+    // console.log(new Date(year, month, 0).getDate())
+    console.log(ageDays)
   }
 
   if (ageMonths < 0) {
     // If the month of the birthdate is greater than the month of today, subtract one year from the age in years
     ageYears--;
+    // console.log(ageYears)
     ageMonths += 12;
+    // console.log(ageMonths)
   }
 
   return { years: ageYears, months: ageMonths, days: ageDays };

@@ -1,0 +1,256 @@
+:root {
+  --red: hsl(1, 90%, 64%);
+  --blue: hsl(219, 85%, 26%);
+
+  --white: hsl(0, 0%, 100%);
+  --very-light-grayish-blue: hsl(228, 70%, 98%);
+  --light-grayish-blue-1: hsl(211, 68%, 96%);
+  --light-grayish-blue-2: hsl(205, 60%, 90%);
+  --grayish-blue: hsl(219, 14%, 63%);
+  --dark-grayish-blue: hsl(219, 12%, 42%);
+  --very-dark-blue: hsl(224, 21%, 14%);
+}
+
+/* fonts used */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/static/PlusJakartaSans-Medium.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./assets/fonts/static/PlusJakartaSans-ExtraBold.ttf")
+    format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 1rem;
+  background-color: var(--very-light-grayish-blue);
+}
+
+main {
+  background-color: var(--white);
+  max-width: 675px;
+  padding: 1rem 2rem;
+  color: var(--very-dark-blue);
+  border-radius: 15px;
+  display: grid;
+  margin: 2rem auto;
+  width: auto;
+}
+
+/* head section */
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.head-sub-container {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1rem;
+}
+
+.unread-num {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--white);
+  background-color: var(--blue);
+  padding: 0.1rem 0.7rem;
+  border-radius: 5px;
+  margin-left: 0.75rem;
+}
+
+.mark-read {
+  color: var(--dark-grayish-blue);
+}
+.mark-read:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+/* notifications section */
+
+h2 {
+  font-size: 1rem;
+  padding-right: 0.25rem;
+}
+h2:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+a {
+  margin-left: 0.25rem;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.notification-link-post {
+  color: var(--dark-grayish-blue);
+}
+
+a:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.name:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+.notification-post-img:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 1px var(--light-grayish-blue-1);
+  border-radius: 8px;
+}
+.notification-list {
+  list-style: none;
+  /* overflow: scroll;
+  height: 26.3rem;
+  overflow-x: hidden; */
+}
+
+@media screen and (max-width: 600px) {
+  .notification-list {
+    overflow: hidden;
+    height: initial;
+    overflow-x: unset;
+  }
+}
+.notification-list-item {
+  display: flex;
+  margin: 0.25rem 0;
+  padding: 0.7rem;
+  border-radius: 10px;
+}
+.notification-list :first-child{
+  margin-top: 0;
+}
+
+.notification-content-flex {
+  width: 100%;
+}
+
+.notification-content-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-profile-img {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+}
+
+.notification-text > * {
+  display: inline;
+}
+
+.unread-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 0.25rem;
+  background-color: red;
+}
+
+.time-past {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--grayish-blue);
+  font-size: 0.9rem;
+}
+
+.notification-message {
+  border: 1px solid var(--light-grayish-blue-2);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+.notification-message:hover {
+  background-color: var(--light-grayish-blue-2);
+
+  cursor: pointer;
+}
+
+.unread {
+  background-color: var(--light-grayish-blue-1);
+}
+
+.notification-post-img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: inline;
+}
+@media screen and ((min-width: 900px) and  (max-width: 950px)) {
+  main {
+    max-width: 800px;
+  }
+
+  .head * {
+    font-size: 1.8rem;
+  }
+
+  .notification-list {
+    font-size: 1.9rem;
+  }
+
+  .time-past {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  main {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 300px) {
+  .head-sub-container h1 {
+    font-size: 0.8rem;
+  }
+  .head-sub-container div {
+    font-size: 0.5rem;
+    margin-left: 1px;
+    margin-top: 2px;
+  }
+  .mark-read {
+    font-size: 0.8rem;
+  }
+}
+
+/* scrolbbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(173, 173, 173);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #909091;
+  border-radius: 2px;
+}
