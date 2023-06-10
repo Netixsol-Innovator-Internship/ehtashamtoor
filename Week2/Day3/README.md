@@ -7,7 +7,7 @@ The task today is to make a rating app in which their will be two cards. both wi
 ---- second card will be for showing the selection rating choosed by the user.
 
 <!-- **************************** Live Link of assignment  ************************************** -->
-
+https://ratingfeedback.surge.sh/
 
 
 
