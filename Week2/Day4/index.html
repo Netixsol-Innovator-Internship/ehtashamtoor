@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tip calculator app</title>
+  </head>
+  <body>
+    <div class="back-mobile-container">
+      <img src="images/logo.svg" class="logo" alt="SPLITLOGO" />
+    </div>
+
+    <div class="back-desktop-logo">
+      <img src="images/logo.svg" class="logo" />
+    </div>
+
+    <!-- <div> -->
+    <div class="algoritm-container">
+      <div class="contain">
+        <div class="bill-container">
+          <h3>Bill</h3>
+          <label>
+            <img src="images/icon-dollar.svg" class="dollar" />
+            <input type="text" placeholder="Cost" alt="bill" id="bill-input" />
+          </label>
+        </div>
+        <div class="select-tip-container">
+          <h3>Select Tip %</h3>
+          <div class="btns">
+            <button
+              class="tip-percent"
+              alt="5 percent"
+              id="five"
+              onclick="first()"
+            >
+              5%
+            </button>
+            <button
+              class="tip-percent"
+              alt="10 percent"
+              id="ten"
+              onclick="second()"
+            >
+              10%
+            </button>
+            <button
+              class="tip-percent"
+              alt="15 percent"
+              id="fifteen"
+              onclick="third()"
+            >
+              15%
+            </button>
+            <button
+              class="tip-percent"
+              alt="25 percent"
+              id="twentyfive"
+              onclick="fourth()"
+            >
+              25%
+            </button>
+            <button
+              class="tip-percent"
+              alt="50 percent"
+              id="fifty"
+              onclick="fifth()"
+            >
+              50%
+            </button>
+            <input
+              type="text"
+              placeholder="Custom"
+              class="tip-percent-grayish"
+              alt="custom amount"
+              id="custom"
+              min="1"
+              max="100"
+            />
+          </div>
+        </div>
+        <div class="bill-container NoOfPeopleBox">
+          <h3>Number of People</h3>
+            <span id="error"></span>
+            <input
+              type="text"
+              placeholder="Amount"
+              alt="people amount"
+              id="persons"
+            >
+            <img src="images/icon-person.svg" id="personIcon" /></input>
+          </label>
+          </label>
+          </label>
+        </div>
+      </div>
+      <div class="box">
+        <div class="tips-container">
+          <div class="all-first">
+            <div class="text-box">
+              <h3>Tip Amount</h3>
+              <p>/ person</p>
+            </div>
+
+            <p class="total" id="tip-amount">$0.00</p>
+          </div>
+
+          <div class="all-first">
+            <div class="text-box">
+              <h3>Total</h3>
+              <p>/ person</p>
+            </div>
+
+            <p class="total" id="total">$0.00</p>
+          </div>
+        </div>
+
+        <div class="btns-container">
+          <button class="reset-btn" alt="reset" id="calc-btn">CALCULATE</button>
+          <button class="reset-btn" alt="reset" id="reset-btn">RESET</button>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <script src="script.js"></script>
+  </body>
+</html>
