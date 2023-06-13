@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Intro section with dropdown navigation</title>
+  </head>
+  <body>
+    <header>
+      <section class="logoBox">
+        <img src="images/logo.svg" alt="snap Logo" />
+      </section>
+
+      <!-- for mobile darken image-->
+      <section class="darkenBg"></section>
+
+      <section class="btns">
+        <nav>
+          <!-- main navbar items -->
+          <ul class="ShowNav">
+            <li id="FeaturesBox">
+              <span> Features </span>
+              <img
+                class="FeaturesArrow"
+                src="images/icon-arrow-down.svg"
+                alt="Arrow Down"
+              />
+              <!-- inner dropdown FEATURES -->
+              <ul class="insideList">
+                <li>
+                  <img src="images/icon-todo.svg" alt="To do svg" />Todo List
+                </li>
+                <li>
+                  <img src="images/icon-calendar.svg" alt="To do svg" />Calendar
+                </li>
+                <li>
+                  <img
+                    src="images/icon-reminders.svg"
+                    alt="To do svg"
+                  />Reminders
+                </li>
+                <li>
+                  <img src="images/icon-planning.svg" alt="To do svg" />Planning
+                </li>
+              </ul>
+            </li>
+            <li id="CompanyBox">
+              <span> Company </span>
+              <img
+                class="CompanyArrow"
+                src="images/icon-arrow-down.svg"
+                alt="Arrow Down"
+              />
+              <!-- inner dropdown COMPANY -->
+              <ul class="insideListComp">
+                <li>History</li>
+                <li>Our Team</li>
+                <li>Blog</li>
+              </ul>
+            </li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+
+        <div class="buttons">
+          <a href="#">Login</a>
+          <button>Register</button>
+        </div>
+      </section>
+
+      <!-- toggler hamburger icon for mobile devices  -->
+      <img src="images/icon-menu.svg" alt="Menu bar" class="NavtoggleBtn" />
+    </header>
+
+    <main>
+      <section class="textSide">
+        <h1 class="mainHeading">Make <br />remote work</h1>
+        <p class="desc">
+          Get your team in sync, no matter your location. Streamline processes,
+          create team rituals, and watch productivity soar.
+        </p>
+        <button class="learnBtn">Learn more</button>
+        <!-- lower images  -->
+        <div class="imagesBox">
+          <ul class="images">
+            <li><img src="images/client-databiz.svg" alt="Databiz image" /></li>
+            <li>
+              <img src="images/client-audiophile.svg" alt="Audiophile image" />
+            </li>
+            <li><img src="images/client-meet.svg" alt="Meet image" /></li>
+            <li><img src="images/client-maker.svg" alt="Marker image" /></li>
+          </ul>
+        </div>
+        <!-- lower images  -->
+      </section>
+      <section class="bannerImage">
+        <img
+          src="images/image-hero-desktop.png"
+          alt="Hero Desktop image"
+          class="desktopImage"
+        />
+        <img
+          src="images/image-hero-mobile.png"
+          alt="Hero Mobile image"
+          class="mobileImage"
+        />
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

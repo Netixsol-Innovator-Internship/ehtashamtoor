@@ -9,8 +9,12 @@ const persons = document.querySelector("#persons");
 const customInput = document.querySelector("#custom");
 const error = document.querySelector("#error");
 
+// change in a bill
+billInput.addEventListener("input", () => {
+  CheckCalculate();
+});
 // when custom input is out of focus
-customInput.addEventListener("blur", () => {
+customInput.addEventListener("input", () => {
   const customValue = parseFloat(customInput.value);
   if (customValue < 1) {
     customInput.value = 1;
@@ -20,6 +24,8 @@ customInput.addEventListener("blur", () => {
   }
   removeClassClicked();
   isClicked = false;
+
+  CheckCalculate();
 });
 
 function handleBtnClick(e) {
@@ -41,17 +47,23 @@ function handleBtnClick(e) {
   btn.classList.add("clicked");
   isClicked = true;
   customInput.value = "";
+  CheckCalculate();
 }
-
+// change for button click
 tipPercentButtons.forEach((btn) => {
   btn.onclick = handleBtnClick;
 });
 
-const resetBtn = document.querySelector("#reset-btn");
-const calcBtn = document.querySelector("#calc-btn");
+// change for no of persons
+persons.addEventListener("input", () => {
+  CheckCalculate();
+});
 
-// onclick function to calculate the final result after checking validations
-calcBtn.onclick = () => {
+const resetBtn = document.querySelector("#reset-btn");
+// const calcBtn = document.querySelector("#calc-btn");
+
+// function to check all validations
+const CheckCalculate = () => {
   // validation for bill amount
   if (billInput.value == "") {
     error.innerText = "Bill Value is empty";
