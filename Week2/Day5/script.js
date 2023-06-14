@@ -57,7 +57,14 @@ const changeCompanyArrow = () => {
 
 // toggler button for navbar on small screens
 NavtoggleBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("showBtns");
+  // navLinks.classList.toggle("showBtns");
+  if (navLinks.classList.contains("showBtns")) {
+    body.classList.remove("side-navbar", "showBtns");
+    navLinks.classList.remove("showBtns");
+  } else if (!navLinks.classList.contains("showBtns")) {
+    body.classList.add("side-navbar", "showBtns");
+    navLinks.classList.add("showBtns");
+  }
   if (navLinks.classList.contains("showBtns")) {
     DarkBg.style.display = "initial";
     NavtoggleBtn.setAttribute("src", "images/icon-close-menu.svg");
