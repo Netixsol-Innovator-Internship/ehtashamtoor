@@ -54,16 +54,35 @@ const changeCompanyArrow = () => {
     CompanyBtn.setAttribute("src", "images/icon-arrow-down.svg");
   }
 };
+window.addEventListener("resize", () => {
+  if (window.screen.width > 850) {
+    navLinks.style.display = "flex";
+  } else {
+    navLinks.style.display = "none";
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  navLinks.style.display = "none";
+
+  if (window.screen.width > 850) {
+    navLinks.style.display = "flex";
+  }
+});
 
 // toggler button for navbar on small screens
 NavtoggleBtn.addEventListener("click", () => {
-  // navLinks.classList.toggle("showBtns");
   if (navLinks.classList.contains("showBtns")) {
     body.classList.remove("side-navbar", "showBtns");
     navLinks.classList.remove("showBtns");
+    navLinks.classList.add("removeBtns");
+    navLinks.style.display = "flex";
+    setTimeout(() => {
+      navLinks.style.display = "none";
+    }, 300);
   } else if (!navLinks.classList.contains("showBtns")) {
     body.classList.add("side-navbar", "showBtns");
     navLinks.classList.add("showBtns");
+    navLinks.classList.remove("removeBtns");
   }
   if (navLinks.classList.contains("showBtns")) {
     DarkBg.style.display = "initial";
