@@ -1,0 +1,675 @@
+/* Light Mode */
+:root[color-mode="light"] {
+  --body-bg-color: #f6f8ff;
+  --head-color: #222731;
+  --darklight-color: #697c9a;
+  --search-bg-color: white;
+  --search-color: #4b6a9b;
+  --black: black;
+  --follow-color: #4b6a9b;
+  --followTotal-color: #2b3442;
+}
+
+/* Dark Mode */
+:root[color-mode="dark"] {
+  --body-bg-color: #141d2f;
+  --head-color: #ffffff;
+  --darklight-color: #ffffff;
+  --search-bg-color: #1e2a47;
+  --search-color: #ffffff;
+  --black: white;
+  --follow-color: white;
+  --followTotal-color: #ffffff;
+  --social-color-: white;
+}
+
+/* Custom Mode */
+:root[color-mode="custom"] {
+  --body-bg-color: #2a4a5b;
+  --head-color: #c5cdd5;
+  --darklight-color: #10c932;
+  --search-bg-color: #016d7e;
+  --search-color: #b7bdbd;
+  --black: #202b33;
+  --follow-color: #06a271;
+  --followTotal-color: #10894f;
+  --social-color: #bec0be;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  background-color: var(--body-bg-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.wrapper {
+  width: 45rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1.4rem;
+}
+.head {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: var(--head-color);
+}
+
+.light-dark-custom {
+  display: flex;
+  gap: 2rem;
+}
+
+:root[color-mode="light"] .light--hidden {
+  display: none;
+}
+:root[color-mode="dark"] .dark--hidden {
+  display: none;
+}
+:root[color-mode="custom"] .custom--hidden {
+  display: none;
+}
+
+.color-mode_btn {
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--body-bg-color);
+  border: none;
+  cursor: pointer;
+  color: var(--darklight-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.search {
+  padding: 0.5rem 0.5rem;
+  background-color: var(--search-bg-color);
+  border-radius: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 10px -8px var(--head-color);
+}
+
+.searchText {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.searchText img {
+  margin-left: 1.8rem;
+}
+.searchText input {
+  margin-left: 20px;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  color: var(--search-color);
+  background-color: var(--search-bg-color);
+}
+
+::placeholder {
+  color: var(--search-color);
+  opacity: 1;
+}
+.searchbtn {
+  padding: 1rem 1.2rem;
+  background-color: #0079ff;
+  border-radius: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.searchbtn:hover {
+  background: #1e80f0;
+}
+
+.resultBody {
+  background-color: var(--search-bg-color);
+  border-radius: 1rem;
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0px 0px 10px -9px var(--head-color);
+}
+.githubHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.githubHead .mainImg {
+  border: 1px solid var(--black);
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.githubHead .mainImg img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.githubFact {
+  padding-left: 13rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.githubInfo {
+  flex: 1;
+  position: relative;
+}
+
+.githubUser {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--followTotal-color);
+}
+.githubUserName {
+  color: #0079ff;
+  margin-top: 5px;
+}
+.githubUserName a {
+  font-size: 1rem;
+  color: #0079ff;
+  text-decoration: none;
+}
+.githubJoinedDate {
+  position: absolute;
+  top: 7px;
+  right: 0;
+  font-size: 1rem;
+  color: var(--darklight-color);
+}
+
+.githubBio {
+  width: 30rem;
+  color: var(--search-color);
+  margin-top: -2.5rem;
+  margin-bottom: 3rem;
+}
+
+.githubRepo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--body-bg-color);
+  width: 100%;
+  padding: 1.3rem 0.5rem;
+  border-radius: 10px;
+}
+
+.repoHeading,
+.followerHeading,
+.followingHeading {
+  font-size: 1rem;
+  color: var(--follow-color);
+}
+.repoTotal,
+.followerTotal,
+.followingTotal {
+  font-size: 1.3rem;
+  color: var(--followTotal-color);
+  font-weight: bold;
+}
+
+.githubSocial {
+  display: grid;
+  grid-template-columns: 18rem 12rem;
+  row-gap: 1.2rem;
+  margin-top: 2rem;
+  color: var(--search-color);
+}
+
+.location,
+.twitter,
+.company,
+.website {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.website a,
+.company p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 44ch;
+  color: var(--search-color);
+}
+.location img,
+.twitter img,
+.company img,
+.website img {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 769px) {
+  .wrapper {
+    width: 42rem;
+  }
+  header {
+    margin-bottom: 2rem;
+  }
+  .head {
+    font-size: 1.8rem;
+  }
+  .color-mode_btn {
+    font-size: 1rem;
+  }
+
+  .searchbtn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+
+  .searchText input {
+    font-size: 1.5rem;
+  }
+
+  .resultBody {
+    height: auto;
+  }
+  .githubUserName {
+    font-size: 1.1rem;
+  }
+  .repoHeading,
+  .followerHeading,
+  .followingHeading {
+    font-size: 1.4rem;
+    color: var(--follow-color);
+  }
+  .repoTotal,
+  .followerTotal,
+  .followingTotal {
+    font-size: 1.5rem;
+  }
+
+  .githubSocial {
+    margin-bottom: 2rem;
+    grid-template-columns: 19rem 18rem;
+  }
+
+  .githubBio {
+    width: 100%;
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+  .githubRepo {
+    padding: 1.3rem 1rem;
+  }
+
+  .githubJoinedDate {
+    top: 85px;
+    left: 0;
+    font-size: 1.2rem;
+  }
+
+  .githubFact {
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    margin-top: 1.7rem;
+  }
+  .githubUser {
+    font-size: 1.8rem;
+  }
+
+  .website a,
+  .company p {
+    max-width: 21ch;
+  }
+  .location,
+  .twitter,
+  .company,
+  .website {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .location img,
+  .twitter img,
+  .company img,
+  .website img {
+    width: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .wrapper {
+    width: 23rem;
+  }
+  header {
+    flex-direction: column;
+  }
+  .search {
+    padding: 0.5rem 0.5rem;
+  }
+  .searchbtn {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  .searchText input {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+  .searchText img {
+    margin-left: 0;
+    width: 1.3rem;
+  }
+
+  .resultBody {
+    height: auto;
+    padding: 1rem;
+  }
+  .githubUserName {
+    font-size: 1.1rem;
+  }
+
+  .githubHead {
+    gap: 1rem;
+  }
+
+  .githubHead .mainImg {
+    width: 5rem;
+    height: 5rem;
+  }
+  .githubUserName {
+    font-size: 0.8rem;
+  }
+  .repoHeading,
+  .followerHeading,
+  .followingHeading {
+    font-size: 0.8rem;
+  }
+  .repoTotal,
+  .followerTotal,
+  .followingTotal {
+    font-size: 1.2rem;
+  }
+
+  .githubSocial {
+    margin-bottom: 1.5rem;
+    grid-template-columns: 16rem;
+  }
+
+  .githubBio {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .githubRepo {
+    padding: 1.3rem 1rem;
+  }
+
+  .githubJoinedDate {
+    top: 59px;
+    left: 0;
+    font-size: 0.8rem;
+  }
+
+  .githubFact {
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    margin-top: 1.7rem;
+  }
+  .githubUser {
+    font-size: 1rem;
+  }
+
+  .website a,
+  .company p {
+    max-width: 21ch;
+  }
+  .location,
+  .twitter,
+  .company,
+  .website {
+    font-size: 1rem;
+  }
+
+  .location img,
+  .twitter img,
+  .company img,
+  .website img {
+    width: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .wrapper {
+    width: 20rem;
+  }
+  .search {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .searchbtn {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  .searchText input {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+  .searchText img {
+    margin-left: 0;
+    width: 1.3rem;
+  }
+
+  .resultBody {
+    height: auto;
+    padding: 1rem;
+  }
+  .githubUserName {
+    font-size: 1.1rem;
+  }
+
+  .githubHead {
+    gap: 1rem;
+  }
+
+  .githubHead .mainImg {
+    width: 5rem;
+    height: 5rem;
+  }
+  .githubUserName {
+    font-size: 0.8rem;
+  }
+  .repoHeading,
+  .followerHeading,
+  .followingHeading {
+    font-size: 0.8rem;
+  }
+  .repoTotal,
+  .followerTotal,
+  .followingTotal {
+    font-size: 1.2rem;
+  }
+
+  .githubSocial {
+    margin-bottom: 1.5rem;
+    grid-template-columns: 16rem;
+  }
+
+  .githubBio {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .githubRepo {
+    padding: 1.3rem 1rem;
+  }
+
+  .githubJoinedDate {
+    top: 59px;
+    left: 0;
+    font-size: 0.8rem;
+  }
+
+  .githubFact {
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    margin-top: 1.7rem;
+  }
+  .githubUser {
+    font-size: 1rem;
+  }
+
+  .website a,
+  .company p {
+    max-width: 21ch;
+  }
+  .location,
+  .twitter,
+  .company,
+  .website {
+    font-size: 1rem;
+  }
+
+  .location img,
+  .twitter img,
+  .company img,
+  .website img {
+    width: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .wrapper {
+    width: 16rem;
+  }
+  .search {
+    padding: 0.4rem 0.2rem;
+    border-radius: 1rem;
+  }
+  .searchbtn {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    border-radius: 0.5rem;
+  }
+
+  .searchText input {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+  .searchText img {
+    margin-left: 0;
+    width: 1.3rem;
+  }
+
+  .resultBody {
+    height: auto;
+    padding: 1rem;
+  }
+  .githubUserName {
+    font-size: 0.7rem;
+  }
+  .githubUserName a {
+    font-size: 0.7rem;
+  }
+
+  .githubHead {
+    gap: 1rem;
+  }
+
+  .githubHead .mainImg {
+    width: 4rem;
+    height: 4rem;
+  }
+  .repoHeading,
+  .followerHeading,
+  .followingHeading {
+    font-size: 0.7rem;
+  }
+  .repoTotal,
+  .followerTotal,
+  .followingTotal {
+    font-size: 1rem;
+  }
+
+  .githubSocial {
+    margin-bottom: 1.5rem;
+    grid-template-columns: 16rem;
+  }
+
+  .githubBio {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .githubRepo {
+    padding: 1.3rem 1rem;
+  }
+
+  .githubJoinedDate {
+    top: 59px;
+    left: 0;
+    font-size: 0.8rem;
+  }
+
+  .githubFact {
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    margin-top: 1.7rem;
+  }
+  .githubUser {
+    font-size: 0.8rem;
+  }
+
+  .website a,
+  .company p {
+    max-width: 23ch;
+  }
+  .location,
+  .twitter,
+  .company,
+  .website {
+    font-size: 0.8rem;
+  }
+
+  .location img,
+  .twitter img,
+  .company img,
+  .website img {
+    width: 1rem;
+  }
+}
