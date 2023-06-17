@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" color-mode="light">
+<html lang="en" color-mode="custom">
 
 <head>
     <meta charset="UTF-8" />
@@ -39,9 +39,11 @@
         <div class="search">
             <div class="searchText">
                 <img src="images/icon-search.svg" alt="" />
-                <input type="text" placeholder="Search Github username..." />
+                <form class="form">
+                    <input type="text" placeholder="Search Github username..." />
+                </form>
             </div>
-            <div class="searchbtn">Search</div>
+            <button class="searchbtn" type="submit">Search</button>
         </div>
 
         <!-- searchbar end -->
@@ -49,6 +51,9 @@
         <!-- result Body starts -->
 
         <div class="resultBody">
+            <div class="resultError">
+                <h4>No Results!</h4>
+            </div>
             <div class="githubHead">
                 <div class="mainImg"></div>
                 <div class="githubInfo">

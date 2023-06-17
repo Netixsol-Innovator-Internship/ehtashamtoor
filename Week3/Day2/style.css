@@ -8,6 +8,8 @@
   --black: black;
   --follow-color: #4b6a9b;
   --followTotal-color: #2b3442;
+  --btn-color: #045778;
+  --btn-hover: #147398;
 }
 
 /* Dark Mode */
@@ -21,19 +23,23 @@
   --follow-color: white;
   --followTotal-color: #ffffff;
   --social-color-: white;
+  --btn-color: #045778;
+  --btn-hover: #147398;
 }
 
 /* Custom Mode */
 :root[color-mode="custom"] {
-  --body-bg-color: #2a4a5b;
+  --body-bg-color: #210814;
   --head-color: #c5cdd5;
-  --darklight-color: #10c932;
-  --search-bg-color: #016d7e;
-  --search-color: #b7bdbd;
+  --darklight-color: #7ae1ad;
+  --search-bg-color: #245d5af7;
+  --search-color: #ffffff;
   --black: #202b33;
-  --follow-color: #06a271;
-  --followTotal-color: #10894f;
+  --follow-color: #569974;
+  --followTotal-color: #ffffff;
   --social-color: #bec0be;
+  --btn-color: #15050d;
+  --btn-hover: #569974;
 }
 
 * {
@@ -109,6 +115,7 @@ header {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 10px -8px var(--head-color);
+  /* position: relative; */
 }
 
 .searchText {
@@ -133,8 +140,9 @@ header {
   opacity: 1;
 }
 .searchbtn {
+  border: 0;
   padding: 1rem 1.2rem;
-  background-color: #0079ff;
+  background-color: var(--btn-color);
   border-radius: 0.9rem;
   display: flex;
   justify-content: center;
@@ -144,8 +152,12 @@ header {
   margin-right: 4px;
   cursor: pointer;
 }
-.searchbtn:hover {
-  background: #1e80f0;
+/* .searchbtn:hover {
+  background: var(--btn-hover);
+  color: var(--black);
+} */
+.moveLeft {
+  margin-right: 9rem !important;
 }
 
 .resultBody {
@@ -161,9 +173,13 @@ header {
 .githubHead {
   display: flex;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 2.5rem;
   width: 100%;
   margin-top: 1rem;
+}
+
+.resultError {
+  display: none;
 }
 
 .githubHead .mainImg {
@@ -199,12 +215,12 @@ header {
   color: var(--followTotal-color);
 }
 .githubUserName {
-  color: #0079ff;
+  color: var(--btn-color);
   margin-top: 5px;
 }
 .githubUserName a {
   font-size: 1rem;
-  color: #0079ff;
+  color: var(--btn-color);
   text-decoration: none;
 }
 .githubJoinedDate {
