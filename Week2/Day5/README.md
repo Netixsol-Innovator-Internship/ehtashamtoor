@@ -1,20 +1,14 @@
 <!-- **************************** Morning Standup meeting content  ************************************** -->
-<h1 align="center">WEEK 2 DAY 3</h1>
+<h1 align="center">WEEK 3 DAY 3</h1>
 
 <h3>MORNING STANDUP MEETING CONTENT</h3>
-today task is to make an intro webpage , which will be responsive.
-in this task two drpdown menus must be shown.
-and on small screens, the navbar will be shown from side on the toggle of a hamburger icon.
+Today task is to implement the funtionality in github app design. I have to fetch api and show the user object into the app.
 
 <!-- **************************** Live Link of assignment  ************************************** -->
 <h3> Live Link</h3>
-http://intropage.surge.sh/
+http://githubuserapp.surge.sh/
 
 <!-- **************************** Evening Standup meeting content  ************************************** -->
 
 <h3>MORNING STANDUP MEETING CONTENT</h3>
-today task is to make an intro webpage , which will be responsive.
-in this task two drpdown menus must be shown.
-and on small screens, the navbar will be shown from side on the toggle of a hamburger icon.
-
-design is almost upto the design provided.
+Today task was to implement the funtionality in github app design. I have to fetch api and show the user object into the app.
