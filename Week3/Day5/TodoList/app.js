@@ -1,11 +1,10 @@
 const express = require("express");
 const ejs = require("ejs");
-
-// const bodyParser = require("body-parser");
+const { v4 } = require("uuid");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.json());
 //set view engine to ejs
 app.set("view engine", "ejs");
 
@@ -28,10 +27,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  // console.log(req.body.addItem);
   // getting item from form request on root route
   let newTodo = {
     text: req.body.addItem,
     completed: false,
+    id: v4(),
   };
   // pushing items into todos array
   todos.push(newTodo);
@@ -44,8 +45,14 @@ app.listen(PORT, () => {
 
 app.post("/select-item", (req, res) => {
   let index = req.body.index;
-  console.log(req.body);
-  // console.log(index, todos);
-  todos[index].completed = !todos[index].completed;
-  res.sendStatus(200);
+  // console.log(index);
+  todos.forEach((todo) => {
+    // console.log(todo);
+    if (todo.id === index) {
+      todo.completed = true;
+    }
+  });
+  res.redirect("/");
+  // res.send({ message: "allOk" });
+  // console.log(todos);
 });

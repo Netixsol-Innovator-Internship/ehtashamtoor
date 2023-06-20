@@ -94,6 +94,7 @@
     </style>
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <div class="wrapper">
       <h2 class="Date"><%= today %></h2>
 
@@ -103,11 +104,7 @@
 
           <% todos.forEach(todo => {%>
           <li class="todo">
-            <input
-              type="checkbox"
-              name="markItem"
-              data-index="<% if (todo.completed) { %>checked<% } %>"
-            />
+            <input type="checkbox" name="markItem" data-index="<%= todo.id%>" />
             <span class="todoText<%= todo.completed ? ' completed' : '' %>"
               ><%= todo.text %></span
             >
@@ -134,27 +131,21 @@
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
         checkboxes.forEach(function (checkbox) {
-          checkbox.addEventListener("change", function () {
-            const index = this.dataset.index;
-            // console.log("index is: " + index);
-            console.log("data is: " + this.dataset);
+          checkbox.addEventListener("change", async function () {
+            const index = checkbox.getAttribute("data-index");
+            console.log("index is: " + index);
+            if (checkbox.checked === true) {
+              console.log("checked");
+            }
+            // console.log("data is: " + this.dataset);
 
             // Send a POST request to the server to mark the item as completed or not
-            fetch("/select-item", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ index }),
-            })
-              .then(function () {
-                console.log("request sent");
-                // Reload the page to reflect the changes
-                // location.reload();
-              })
-              .catch(function (error) {
-                console.error("Error:", error);
-              });
+
+            let resp = await axios.post("/select-item", { index: index });
+            // console.log();
+            if (resp.data.message === "allOk") {
+              // window.location.reload();
+            }
           });
         });
       });
