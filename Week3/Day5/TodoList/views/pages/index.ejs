@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList using ejs</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      li {
+        list-style-type: none;
+      }
+      .wrapper {
+        background: #e5ebff;
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 1;
+      }
+
+      .triangle {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        border-bottom: 61vh solid #a086db;
+        border-right: 74vw solid transparent;
+        z-index: -1;
+      }
+
+      .Date {
+        background-color: #a086db;
+        color: white;
+        padding: 0.7rem 1rem;
+        box-shadow: 0px 0px 11px 2px #c3c1c1;
+        border-radius: 10px;
+        font-size: 1.8rem;
+      }
+
+      .todoBox {
+        background-color: white;
+        margin-top: 2rem;
+        box-shadow: 0px 0px 9px 2px #c3c1c1;
+      }
+      .todo {
+        border-bottom: 1px solid lightgray;
+        padding: 0.8rem;
+        padding-right: 10.7rem;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .form {
+        display: flex;
+        gap: 1rem;
+        padding-top: 1rem;
+        justify-content: center;
+      }
+      .form input {
+        border: none;
+        width: 80%;
+        margin-bottom: 2px;
+      }
+
+      .form input:focus {
+        border-bottom: 3px solid #a086db;
+        outline: none;
+      }
+
+      .addBtn {
+        width: 2rem;
+        height: 2rem;
+        background-color: #a086db;
+        border-radius: 50%;
+        color: white;
+        border: none;
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+      }
+
+      /* class to strike the selected */
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2 class="Date"><%= today %></h2>
+
+      <div class="todoBox">
+        <ul>
+          <li class="todo">Add todos below:</li>
+
+          <% todos.forEach(todo => {%>
+          <li class="todo">
+            <input
+              type="checkbox"
+              name="markItem"
+              data-index="<% if (todo.completed) { %>checked<% } %>"
+            />
+            <span class="todoText<%= todo.completed ? ' completed' : '' %>"
+              ><%= todo.text %></span
+            >
+          </li>
+          <%}); %>
+
+          <form action="" method="post" class="form">
+            <input
+              type="text"
+              name="addItem"
+              autocomplete="off"
+              placeholder="additem"
+            />
+            <button type="submit" class="addBtn">+</button>
+          </form>
+        </ul>
+      </div>
+
+      <div class="triangle"></div>
+    </div>
+
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach(function (checkbox) {
+          checkbox.addEventListener("change", function () {
+            const index = this.dataset.index;
+            // console.log("index is: " + index);
+            console.log("data is: " + this.dataset);
+
+            // Send a POST request to the server to mark the item as completed or not
+            fetch("/select-item", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ index }),
+            })
+              .then(function () {
+                console.log("request sent");
+                // Reload the page to reflect the changes
+                // location.reload();
+              })
+              .catch(function (error) {
+                console.error("Error:", error);
+              });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
