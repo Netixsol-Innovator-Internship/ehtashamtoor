@@ -56,3 +56,5 @@ app.post("/select-item", (req, res) => {
   // res.send({ message: "allOk" });
   // console.log(todos);
 });
+
+module.exports = { app };
