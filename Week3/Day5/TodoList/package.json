@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "chlobhai": "nodemon app.js",
-    "vercel-build": "echo hello"
+    "start": "node app.js"
   },
   "author": "Toor",
   "license": "ISC",
