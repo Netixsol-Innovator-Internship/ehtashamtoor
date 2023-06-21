@@ -61,6 +61,14 @@ app.post("/editTodo", (req, res) => {
   console.log("UpdatedTodos ARRAY: ", todos);
   res.send({ message: "Todo Edit" });
 });
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./build")));
+  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "./build/index.html")));
+} else {
+  app.get("/", (req, res) => res.send("Please set to production"));
+}
 app.listen(PORT, () => {
   console.log("SERVER IS UP AND RUNNING");
 });
