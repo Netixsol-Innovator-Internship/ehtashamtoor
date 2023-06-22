@@ -1,13 +1,14 @@
 const express = require("express");
 const ejs = require("ejs");
 const { v4 } = require("uuid");
+const path = require("path");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 //set view engine to ejs
 app.set("view engine", "ejs");
-
+app.set("views", path.join(__dirname, "views"));
 // using res.render to load up an ejs view file
 
 const PORT = 3000;
@@ -57,4 +58,4 @@ app.post("/select-item", (req, res) => {
   // console.log(todos);
 });
 
-module.exports = app ;
+module.exports = app;
