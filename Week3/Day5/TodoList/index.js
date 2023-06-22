@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 //set view engine to ejs
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-// using res.render to load up an ejs view file
 
 const PORT = 3000;
 
