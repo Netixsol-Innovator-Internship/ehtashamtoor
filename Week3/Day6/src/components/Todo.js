@@ -5,12 +5,15 @@ import { MdDelete } from "react-icons/md";
 import { MdEditSquare } from "react-icons/md";
 import { useState } from "react";
 import "../App.css";
+// axios.defaults.withCredentials = false;
 
 const Todo = ({ todo, getTodos }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [inputVal, setInputVal] = useState("");
   const DeleteTodo = async (id) => {
-    let resp = await axios.delete(`http://localhost:5000/deleteTodo?id=${id}`);
+    let resp = await axios.delete(
+      `${process.env.REACT_APP_API_URL}/deleteTodo?id=${id}`
+    );
     console.log(resp);
     const { message } = resp.data;
     if (message === "todo deleted") {
@@ -33,7 +36,7 @@ const Todo = ({ todo, getTodos }) => {
     };
     console.log(editedtodo);
 
-    const resp = await axios.post("http://localhost:5000/editTodo", {
+    const resp = await axios.post(`${process.env.REACT_APP_API_URL}/editTodo`, {
       editedtodo,
     });
     // console.log(resp.data);
@@ -48,9 +51,9 @@ const Todo = ({ todo, getTodos }) => {
       {isEdit ? (
         <div
           className="wrapperPopUp"
-          onClick={() => {
-            setIsEdit(false);
-          }}
+          // onClick={() => {
+          //   setIsEdit(false);
+          // }}
         >
           <div className="editPopBox bg-gradient-to-r from-purple-600 to-blue-600 w-fit">
             <button

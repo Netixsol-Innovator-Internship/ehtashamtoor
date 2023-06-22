@@ -4,13 +4,14 @@ import { useState, useRef, useLayoutEffect } from "react";
 import axios from "axios";
 import { v4 } from "uuid";
 import toast, { Toaster } from "react-hot-toast";
+// axios.defaults.withCredentials = false;
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [inputVal, setInputVal] = useState("");
-
+  console.log(process.env.REACT_APP_API_URL);
   const getTodos = async () => {
-    let resp = await axios.get("http://localhost:5000/");
+    let resp = await axios.get(`${process.env.REACT_APP_API_URL}/`);
     console.log(resp.data.message);
     setTodos(resp.data.todos);
   };
@@ -27,8 +28,10 @@ function App() {
       value: inputVal,
     };
     // console.log("input value:", newTodo);
-
-    const resp = await axios.post("http://localhost:5000/addTodo", { newTodo });
+    // http://localhost:5000
+    const resp = await axios.post(`${process.env.REACT_APP_API_URL}/addTodo`, {
+      newTodo,
+    });
     console.log(resp.data);
     if (resp.data.message === "Todo empty") {
       toast("Todo cannot be left empty");

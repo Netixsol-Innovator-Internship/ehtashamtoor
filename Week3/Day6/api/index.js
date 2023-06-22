@@ -1,17 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const { body, validationResult } = require("express-validator");
+const dotenv = require("dotenv");
 const app = express();
-const PORT = 5000;
+
+dotenv.config();
+const PORT = process.env.API_PORT;
 
 // todos array
 let todos = [];
-
 app.use(cors());
 app.use(express.json());
 
+app.listen(PORT, () => {
+  console.log("SERVER IS UP AND RUNNING");
+});
+// console.log(PORT);
 app.get("/", (req, res) => {
-  console.log("Home page");
+  // res.send("helloWorld");
   res.send({ todos });
 });
 
@@ -62,13 +68,4 @@ app.post("/editTodo", (req, res) => {
   res.send({ message: "Todo Edit" });
 });
 
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./build")));
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "./build/index.html")));
-} else {
-  app.get("/", (req, res) => res.send("Please set to production"));
-}
-app.listen(PORT, () => {
-  console.log("SERVER IS UP AND RUNNING");
-});
+module.exports = app;
