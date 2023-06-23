@@ -7,7 +7,7 @@ in using node.js , react.js and express.js.
 
 
 <!-- **************************** Live Link of assignment  ************************************** -->
-https://todoapp-ehtashamtoor.vercel.app/
+https://fullstacktodosapp.vercel.app/
 
 <!-- **************************** Evening Standup meeting content  ************************************** -->
 
