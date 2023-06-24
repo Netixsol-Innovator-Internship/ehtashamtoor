@@ -8,6 +8,11 @@ import React from "react";
 import Hero from "./components/Hero/Hero";
 import bg from "./assets/hero/Cover.png";
 import Footer from "./components/Footer/Footer";
+import NewsLetter from "./components/Newsletter/NewsLetter";
+import Collaboration from "./components/Collaboration/Collaboration";
+import Discount from "./components/Discount/Discount";
+import Community from "./components/Community/Community";
+import Collection from "./components/collection/Collection";
 function App() {
   const colors = theme.palette;
   return (
@@ -29,14 +34,50 @@ function App() {
         {/* Hero Section starts*/}
         <Hero />
         {/* Hero Section ends */}
-        <Container
-          sx={{
-            padding: "2.5rem 1.9rem !important",
-          }}
+
+        {/* Discount starts */}
+        <Box sx={{ margin: "5rem 0", padding: "0" }}>
+          <Discount />
+        </Box>
+        {/* Discount ends */}
+
+        {/* Collection starts */}
+        <Collection />
+        {/* Collection ends */}
+
+        {/* Community starts */}
+        <Box sx={{ margin: "5rem 0", padding: "0" }}>
+          <Community />
+        </Box>
+        {/* Community ends */}
+
+        {/* Discount starts */}
+        <Box sx={{ margin: "5rem 0", padding: "0" }}>
+          <Discount />
+        </Box>
+        {/* Discount ends */}
+
+        {/* Collaboration starts */}
+        <Box sx={{ margin: "5rem 0", padding: "0" }}>
+          <Collaboration />
+        </Box>
+        {/* Collaboration ends */}
+
+        {/* Newsletter starts */}
+        <Box
+          sx={{ margin: "5rem 0" }}
+          padding={{ xs: "1rem 1rem", md: "4rem 4.5rem" }}
         >
-          {/* Footer starts */}
+          <NewsLetter />
+        </Box>
+        {/* Newsletter ends */}
+        {/* Footer starts */}
+        <Box
+          sx={{ margin: "5rem 0" }}
+          padding={{ xs: "1rem 1rem", md: "4rem 4.5rem" }}
+        >
           <Footer />
-        </Container>
+        </Box>
         {/* Footer ends */}
       </Container>
     </ThemeProvider>

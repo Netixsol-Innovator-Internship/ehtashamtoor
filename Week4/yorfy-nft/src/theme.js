@@ -24,7 +24,7 @@ const theme = createTheme({
       title: "#333333",
       body: "#666666",
       inField: "#B8B8B8",
-      disable: "#EBEBEB",
+      disabled: "#EBEBEB",
       white: "#FFFFFF",
     },
   },
@@ -32,7 +32,7 @@ const theme = createTheme({
     fontFamily: "Poppins, sans-serif",
     fontSize: 14,
     h1: {
-      fontSize: '4rem',
+      fontSize: "4rem",
       fontWeight: 700,
     },
     h2: {

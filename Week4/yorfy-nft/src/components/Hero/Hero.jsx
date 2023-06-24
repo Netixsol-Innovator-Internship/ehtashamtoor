@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Box, Typography, Container, Divider } from "@mui/material";
+import { Stack, Box, Typography, Container } from "@mui/material";
 import theme from "../../theme";
 import faces from "../../assets/hero/faces.png";
 import Buttton from "../Button";

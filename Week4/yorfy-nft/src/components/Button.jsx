@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-const Buttton = ({ text, bg, border }) => {
+const Buttton = ({ text, bg, border = "" }) => {
   return (
     <Button
       sx={{
@@ -12,8 +12,7 @@ const Buttton = ({ text, bg, border }) => {
         padding: {
           xs: "0.5rem 1rem",
           sm: "0.7rem 3rem",
-          md: "0.7rem 1.2rem",
-          xl: "1rem 1.5rem",
+          md: "0.7rem 1.9rem",
         },
         border: { border },
         fontSize: { xs: "12px", md: "initial" },
