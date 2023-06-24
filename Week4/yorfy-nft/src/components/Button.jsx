@@ -9,7 +9,12 @@ const Buttton = ({ text, bg, border }) => {
         borderRadius: "10px",
         color: "white",
         textTransform: "initial",
-        padding: { xs: "0.5rem 1rem", sm: "0.7rem 3rem", md: "0.7rem 1.2rem" },
+        padding: {
+          xs: "0.5rem 1rem",
+          sm: "0.7rem 3rem",
+          md: "0.7rem 1.2rem",
+          xl: "1rem 1.5rem",
+        },
         border: { border },
         fontSize: { xs: "12px", md: "initial" },
       }}

@@ -15,6 +15,7 @@ import theme from "../../theme";
 import ImageListItem from "@mui/material/ImageListItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Logo from "../../assets/navbar/Logo.svg";
+import LogoWithText from "../LogoWithText";
 
 const pages = ["Home", "NFT", "Roadmap", "About Us", "Contact Us", "Pages"];
 
@@ -46,25 +47,7 @@ function Navbar() {
         <Toolbar disableGutters>
           {/* desktop logo yorfy */}
           <Box sx={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-            <ImageListItem sx={{ width: 40, height: 40 }}>
-              <img src={Logo} alt="Yorfy-logo" />
-            </ImageListItem>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontWeight: 700,
-                letterSpacing: ".1rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              YORFY
-            </Typography>
+            <LogoWithText />
           </Box>
 
           {/* mobile toggler icon starts */}

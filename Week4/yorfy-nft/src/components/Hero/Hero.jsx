@@ -6,7 +6,7 @@ import Buttton from "../Button";
 const Hero = () => {
   const colors = theme.palette;
   return (
-    <Container sx={{ padding: "2.5rem 1.5rem !important" }}>
+    <Container sx={{ padding: "2.5rem 1.9rem !important" }}>
       <Stack
         direction={{ xs: "column", md: "row" }}
         justifyContent={"space-between"}
@@ -16,7 +16,7 @@ const Hero = () => {
         {/* left column starts*/}
         <Box
           width={{ sm: "90%", md: "40", xl: "50%" }}
-          sx={{ color: colors.text.white }}
+          sx={{ color: colors.text.white, zIndex: 1 }}
         >
           <Stack justifyContent={"space-between"} gap={"1.5rem"}>
             <Typography sx={{ color: colors.accent.main, fontWeight: 700 }}>

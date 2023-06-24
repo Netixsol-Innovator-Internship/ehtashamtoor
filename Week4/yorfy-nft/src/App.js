@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import React from "react";
 import Hero from "./components/Hero/Hero";
 import bg from "./assets/hero/Cover.png";
+import Footer from "./components/Footer/Footer";
 function App() {
   const colors = theme.palette;
   return (
@@ -14,21 +15,29 @@ function App() {
       <Container
         maxWidth={"xl"}
         sx={{
-          background: `url(${bg}) no-repeat`,
           borderRadius: "0px",
-          backgroundSize: "100% 100%",
+          background: `url(${bg}) no-repeat`,
+          backgroundSize: { xs: "cover", md: "100% 100%" },
           padding: "0 !important",
         }}
       >
         {/* Navbar start */}
-        <Box sx={{}}>
-          <Navbar />
-        </Box>
+        <Navbar />
+
         {/* Navbar End */}
 
         {/* Hero Section starts*/}
         <Hero />
         {/* Hero Section ends */}
+        <Container
+          sx={{
+            padding: "2.5rem 1.9rem !important",
+          }}
+        >
+          {/* Footer starts */}
+          <Footer />
+        </Container>
+        {/* Footer ends */}
       </Container>
     </ThemeProvider>
   );
