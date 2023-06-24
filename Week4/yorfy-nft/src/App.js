@@ -13,6 +13,7 @@ import Collaboration from "./components/Collaboration/Collaboration";
 import Discount from "./components/Discount/Discount";
 import Community from "./components/Community/Community";
 import Collection from "./components/collection/Collection";
+import Featured from "./components/Featured/Featured";
 function App() {
   const colors = theme.palette;
   return (
@@ -21,8 +22,7 @@ function App() {
         maxWidth={"xl"}
         sx={{
           borderRadius: "0px",
-          background: `url(${bg}) no-repeat`,
-          backgroundSize: { xs: "cover", md: "100% 100%" },
+          background: colors.secondary.main,
           padding: "0 !important",
         }}
       >
@@ -41,6 +41,12 @@ function App() {
         </Box>
         {/* Discount ends */}
 
+        {/* Featured starts */}
+        <Box sx={{ margin: "5rem 0", padding: "0" }}>
+          <Featured />
+        </Box>
+        {/* Featured ends */}
+
         {/* Collection starts */}
         <Collection />
         {/* Collection ends */}
@@ -50,7 +56,7 @@ function App() {
           <Community />
         </Box>
         {/* Community ends */}
-          
+
         {/* Discount starts */}
         <Box sx={{ margin: "5rem 0", padding: "0" }}>
           <Discount />

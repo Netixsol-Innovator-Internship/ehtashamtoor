@@ -29,6 +29,8 @@ const Collection = () => {
 
       {/* Collection images */}
       <Stack
+        position={"relative"}
+        zIndex={2}
         gap={"1rem"}
         direction="row"
         margin="2rem auto"
@@ -36,6 +38,36 @@ const Collection = () => {
         justifyContent={"center"}
         alignItems={"center"}
       >
+        {/* left blur circle */}
+        <Box
+          sx={{
+            width: { xs: "20px", sm: "200px", md: "250px" },
+            height: { xs: "20px", sm: "200px", md: "250px" },
+            opacity: 0.5,
+            borderRadius: "400px",
+            background: colors.primary.main,
+            filter: "blur(120px)",
+            position: "absolute",
+            top: "6rem",
+            left: "-5rem",
+            zIndex: 0,
+          }}
+        ></Box>
+        {/* right blur circle */}
+        <Box
+          sx={{
+            width: { xs: "20px", sm: "200px", md: "250px" },
+            height: { xs: "20px", sm: "200px", md: "250px" },
+            opacity: 1,
+            borderRadius: "400px",
+            background: colors.background.default,
+            filter: "blur(120px)",
+            position: "absolute",
+            top: { xs: "3rem", md: "8rem" },
+            right: { xs: "1rem", md: "0rem" },
+            zIndex: 0,
+          }}
+        ></Box>
         <Stack gap={"1rem"}>
           <Stack
             sx={{

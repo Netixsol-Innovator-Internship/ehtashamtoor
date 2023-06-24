@@ -24,7 +24,12 @@ const Discount = () => {
       <Typography
         fontSize={{ xs: "1rem", sm: "1.5rem", md: "2rem" }}
         fontWeight={700}
-        color={colors.text.white}
+        color={"transparent"}
+        sx={{
+          color: "transparent",
+          WebkitTextStroke: "1px white",
+          WebkitTextFillColor: "transparent",
+        }}
       >
         Up to 40%
       </Typography>
@@ -39,6 +44,11 @@ const Discount = () => {
         fontSize={{ xs: "1rem", sm: "1.5rem", md: "2rem" }}
         fontWeight={700}
         color={colors.text.white}
+        sx={{
+          color: "transparent",
+          WebkitTextStroke: "1px white",
+          WebkitTextFillColor: "transparent",
+        }}
       >
         Up to 40%
       </Typography>

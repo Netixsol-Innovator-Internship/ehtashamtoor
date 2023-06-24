@@ -6,7 +6,27 @@ import Buttton from "../Button";
 const Hero = () => {
   const colors = theme.palette;
   return (
-    <Container sx={{ padding: "2.5rem 1.9rem !important" }}>
+    <Container
+      sx={{
+        padding: "2.5rem 1.9rem !important",
+        position: "relative",
+      }}
+    >
+      {/* Blur circles */}
+      {/* left circle */}
+      <Box
+        sx={{
+          width: { xs: "20px", sm: "200px", md: "210px" },
+          height: { xs: "20px", sm: "200px", md: "210px" },
+          borderRadius: "400px",
+          background: colors.primary.main,
+          filter: "blur(120px)",
+          position: "absolute",
+          top: "5rem",
+          left: "-2rem",
+        }}
+      ></Box>
+
       <Stack
         direction={{ xs: "column", md: "row" }}
         justifyContent={"space-between"}
@@ -28,7 +48,7 @@ const Hero = () => {
             >
               Now Available, Meet Yorfy NFT Collection ⭐️
             </Typography>
-            <Typography sx={{ fontWeight: 300, lineHeight: "32px" }}>
+            <Typography sx={{ fontWeight: 300 }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
@@ -74,6 +94,30 @@ const Hero = () => {
 
         {/* right column starts*/}
         <Box position={"relative"} width={{ sm: "80%", md: "40", xl: "50%" }}>
+          <Box
+            sx={{
+              width: { xs: "20px", sm: "200px", md: "210px" },
+              height: { xs: "20px", sm: "200px", md: "210px" },
+              borderRadius: "400px",
+              background: colors.primary.main,
+              filter: "blur(120px)",
+              position: "absolute",
+              top: { xs: "3rem", md: "5rem" },
+              right: { xs: "1rem", md: "1rem" },
+            }}
+          ></Box>
+          <Box
+            sx={{
+              width: "320px",
+              height: "320px",
+              borderRadius: "320px",
+              background: colors.background.default,
+              filter: "blur(120px)",
+              position: "absolute",
+              top: "6rem",
+              right: "20rem",
+            }}
+          ></Box>
           <Box
             component={"img"}
             src={faces}
