@@ -50,7 +50,7 @@ function App() {
           <Community />
         </Box>
         {/* Community ends */}
-
+          
         {/* Discount starts */}
         <Box sx={{ margin: "5rem 0", padding: "0" }}>
           <Discount />

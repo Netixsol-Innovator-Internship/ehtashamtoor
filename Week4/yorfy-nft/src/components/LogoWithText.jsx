@@ -3,7 +3,7 @@ import { Typography, ImageListItem, Stack } from "@mui/material";
 import Logo from "../assets/navbar/Logo.svg";
 import theme from "../theme";
 
-const LogoWithText = () => {
+const LogoWithText = ({text, notNone = true}) => {
   const colors = theme.palette;
   return (
     <Stack direction={"row"} alignItems={"center"} gap={"10px"}>
@@ -17,7 +17,7 @@ const LogoWithText = () => {
         href="/"
         sx={{
           mr: 2,
-          display: { xs: "none", md: "flex" },
+          display: { xs: notNone && "none", md: "flex" },
           fontWeight: 700,
           letterSpacing: ".1rem",
           color: "inherit",
@@ -26,7 +26,7 @@ const LogoWithText = () => {
           color: colors.text.white,
         }}
       >
-        YORFY
+        {text}
       </Typography>
     </Stack>
   );

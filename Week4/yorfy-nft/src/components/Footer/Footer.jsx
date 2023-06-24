@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <Stack gap={"2rem"}>
       <Stack direction={"row"} justifyContent={"space-between"}>
-        <LogoWithText />
+        <LogoWithText text="YORFY"/>
         <Stack direction={"row"} gap={"15px"}>
           {socialMedia.map((media) => {
             return (

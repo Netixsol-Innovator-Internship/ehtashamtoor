@@ -47,7 +47,7 @@ function Navbar() {
         <Toolbar disableGutters>
           {/* desktop logo yorfy */}
           <Box sx={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-            <LogoWithText />
+            <LogoWithText text="YORFY"/>
           </Box>
 
           {/* mobile toggler icon starts */}
