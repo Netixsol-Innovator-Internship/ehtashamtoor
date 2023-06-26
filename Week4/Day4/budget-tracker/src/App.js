@@ -8,15 +8,15 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <div className="App">
-      <Toaster position="bottom-center" />
-      <Header />
-      <Balance />
+      <div className="App">
+        <Toaster position="bottom-center" />
+        <Header />
+        <Balance />
 
-      <IncomeExpense />
-      <TransHistory />
-      <AddTransaction />
-    </div>
+        <IncomeExpense />
+        <TransHistory />
+        <AddTransaction />
+      </div>
   );
 }
 
