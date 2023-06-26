@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { DelTrans } from "../actions/allActions";
 import { EditTrans } from "../actions/allActions";
+import { toast } from "react-hot-toast";
 
 export const Transaction = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -21,10 +22,12 @@ export const Transaction = ({ transaction }) => {
 
     seteditOn(false);
     dispatch(EditTrans(transaction, trans));
+    toast.success("Transaction edit successfull");
   }
 
   const RemoveTrans = (id) => {
     dispatch(DelTrans(id));
+    toast.error("Transaction deleted");
   };
   return editOn ? (
     <div className="wrapperPopUp">
