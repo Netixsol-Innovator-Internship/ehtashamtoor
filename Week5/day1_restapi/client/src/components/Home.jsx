@@ -24,7 +24,7 @@ const Home = () => {
     }
 
     const getUsers = async () => {
-        let resp = await axios.get("http://localhost:5000/users")
+        let resp = await axios.get("https://crudbackend-ruddy.vercel.app/users")
         console.log(resp.data)
         setUsers(resp.data)
     }
@@ -44,7 +44,7 @@ const Home = () => {
         if (editClick) {
             // console.log(inputs);
             try {
-                let resp = await axios.patch(`http://localhost:5000/users/${userID}`, inputs);
+                let resp = await axios.patch(`https://crudbackend-ruddy.vercel.app/users/${userID}`, inputs);
 
                 if (resp.data.message) {
                     setUsers(resp.data.users)
@@ -56,7 +56,7 @@ const Home = () => {
             }
         } else {
             try {
-                let resp = await axios.post("http://localhost:5000/users/createUser", inputs);
+                let resp = await axios.post("https://crudbackend-ruddy.vercel.app/users/createUser", inputs);
 
                 if (resp.data.message) {
                     setUsers(resp.data.users)
@@ -75,7 +75,7 @@ const Home = () => {
     const handleDelete = async (id) => {
         // console.log(id)
         try {
-            let resp = await axios.delete(`http://localhost:5000/users/${id}`)
+            let resp = await axios.delete(`https://crudbackend-ruddy.vercel.app/users/${id}`)
             if (resp.data.message) {
                 toast.success("user removed")
                 setUsers(resp.data.users)
@@ -94,7 +94,7 @@ const Home = () => {
     };
     const getsingleUser = async (id) => {
         try {
-            let resp = await axios.get(`http://localhost:5000/users/${id}`)
+            let resp = await axios.get(`https://crudbackend-ruddy.vercel.app/users/${id}`)
             if (resp.data.message) {
                 setSingleUser(resp.data.user)
             }
@@ -129,7 +129,7 @@ const Home = () => {
                         <tr className="text-white">
                             <th>Name</th>
                             <th>Age</th>
-                            <th>Actions</th>
+                            <th><span className="text-yellow-300">Edit</span>/<span className="text-red-500">Delete</span>/<span className="text-green-500">Details</span></th>
                         </tr>
                     </thead>
                     <tbody className="text-white">
