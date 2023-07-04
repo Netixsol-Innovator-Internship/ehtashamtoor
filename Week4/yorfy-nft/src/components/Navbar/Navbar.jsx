@@ -89,26 +89,6 @@ function Navbar() {
           </Box>
           {/* mobile toggler icon ends */}
 
-          {/* place yorfy icon here mobile */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-
           {/* navbar links desktop */}
           <Box
             sx={{
