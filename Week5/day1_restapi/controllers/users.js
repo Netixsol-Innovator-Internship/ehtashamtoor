@@ -13,23 +13,24 @@ export const createUser = (req, res) => {
 
     users.push({ ...user, id: uuid() });
 
-    res.send(users)
+    res.send({ message: true, users })
 
     console.log(`User [${user.name}] added to the database.`);
 };
 
 export const getSingleUser = (req, res) => {
-    res.send(req.params.id)
+    const { id } = req.params;
+
     let founduser = users.find((user) => user.id === id);
-    res.send(founduser)
+    res.send({ message: true, user: founduser })
 };
 
 export const deleteUser = (req, res) => {
     const { id } = req.params;
 
-    users = users.filter((user) => user.id !== req.params.id);
+    users = users.filter((user) => user.id !== id);
 
-    res.send(users)
+    res.send({ message: true, users })
 
     console.log(`user with id ${id} has been deleted`);
 };
@@ -47,7 +48,7 @@ export const updateUser = (req, res) => {
         founduser.age = req.body.age;
     }
 
-    res.send(users)
+    res.send({ message: true, users })
 
     console.log(`name has been updated to ${req.body.name}.age has been updated to ${req.body.age}`)
 };
