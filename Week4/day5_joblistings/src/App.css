@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "League Spartan", sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --bgColor: hsl(180, 29%, 50%),
+}
+
+ul {
+  list-style-type: none;
+}
+
+.headerWrapper {
+  position: relative;
+  background: var(--bgColor);
+}
+
+.filtersWrapper {
+  width: 80%;
+  max-width: 1320px;
+  position: absolute;
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px 4px rgba(91, 164, 164, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: -2rem;
+  gap: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.names,
+.skills-name {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  flex-wrap: wrap;
+  height: 25px;
+  line-height: 25px;
+}
+
+.skills-name {
+  gap: 10px;
+}
+
+.skill-name {
+  background: hsl(180, 52%, 96%);
+  border-radius: 4px;
+  color: black;
+}
+
+.skill-name:hover {
+  background: var(--bgColor);
+  cursor: pointer;
+}
+
+.names {
+  background: hsl(180, 52%, 96%);
+}
+
+.skill-name,
+.filter-name {
+  padding: 0 7px;
+  color: var(--bgColor);
+  font-size: 16px;
+}
+
+.filter-icon {
+  display: inline-block;
+  padding: 5px;
+  background: var(--bgColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.filter-icon:hover {
+  background: hsl(180, 14%, 20%);
+}
+
+.clear {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  color: var(--bgColor);
+  cursor: pointer;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 50px;
+  box-shadow: 0px 4px 6px 4px rgba(91, 164, 164, 0.2);
+  border-radius: 5px;
+}
+
+.data {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.data img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background: var(--bgColor);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.types {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.types p {
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+}
+
+.new {
+  background: var(--bgColor);
+  color: black !important;
+  padding: 5px 8px;
+  border-radius: 16px;
+}
+
+.featured {
+  background: hsl(180, 14%, 20%);
+  padding: 5px 8px;
+  border-radius: 16px;
+}
+
+.time-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: hsl(180, 8%, 52%);
+  font-size: 14px;
+}
+
+.company {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dot {
+  width: 2px;
+  height: 2px;
+  background: hsl(180, 8%, 52%);
+}
+
+.title>p {
+  color: var(--bgColor);
+  font-weight: 700;
+}
+
+.designation:hover {
+  cursor: pointer;
+  color: var(--bgColor);
+}
+
+.features {
+  border-left: 5px solid var(--bgColor);
+}
+
+.body-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 80%;
+  max-width: 1320px;
+  margin: 80px auto 130px;
+}
+
+.bgMobile {
+  display: none;
+}
+
+
+@media screen and (max-width: 950px) {
+
+  .body-list,
+  .filtersWrapper {
+    width: 90%;
+  }
+
+  .list-container {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .list-container {
+    display: block;
+  }
+
+  .skills {
+    margin-left: 130px;
+  }
+
+  .bgDesktop {
+    display: none;
+  }
+
+  .bgMobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .body-list {
+    width: 95%;
+  }
+
+  .list-container {
+    padding: 15px;
+    gap: 15px;
+    height: max-content;
+    position: relative;
+  }
+
+  .skills {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .data {
+    display: block;
+  }
+
+  .data img {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+  }
+
+  .time-details {
+    border-bottom: 1px solid hsl(180, 8%, 52%);
+  }
+
+  .skills-name {
+    margin-top: 15px;
+    height: auto;
+  }
+
+  .company {
+    margin-top: 30px;
+    gap: 0;
+  }
+
+  .designation,
+  .title,
+  .time-details {
+    padding: 10px 0;
+  }
+
+  .filtersWrapper {
+    padding: 15px;
+    width: 95%;
+  }
+}

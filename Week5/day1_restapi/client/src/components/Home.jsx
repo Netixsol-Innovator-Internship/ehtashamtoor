@@ -24,7 +24,7 @@ const Home = () => {
     }
 
     const getUsers = async () => {
-        let resp = await axios.get("https://crudbackend-ruddy.vercel.app/users")
+        let resp = await axios.get("https://crudbackend-ehtashamtoor.vercel.app/users")
         console.log(resp.data)
         setUsers(resp.data)
     }
@@ -44,38 +44,50 @@ const Home = () => {
         if (editClick) {
             // console.log(inputs);
             try {
-                let resp = await axios.patch(`https://crudbackend-ruddy.vercel.app/users/${userID}`, inputs);
+                let resp = await axios.patch(`https://crudbackend-ehtashamtoor.vercel.app/users/${userID}`, inputs);
 
                 if (resp.data.message) {
                     setUsers(resp.data.users)
                     toast.success("user updated")
                     setEditClick(false)
+                    setInputs({
+                        name: "",
+                        age: ""
+                    })
+                } else {
+                    resp.data.errors.forEach(error => {
+                        toast.error(error.msg)
+                    });
                 }
             } catch (error) {
                 console.log(error.message)
             }
         } else {
             try {
-                let resp = await axios.post("https://crudbackend-ruddy.vercel.app/users/createUser", inputs);
+                let resp = await axios.post("https://crudbackend-ehtashamtoor.vercel.app/users/createUser", inputs);
 
                 if (resp.data.message) {
                     setUsers(resp.data.users)
                     toast.success("user created")
+                    setInputs({
+                        name: "",
+                        age: ""
+                    })
+                } else {
+                    resp.data.errors.forEach(error => {
+                        toast.error(error.msg)
+                    });
                 }
             } catch (error) {
                 console.log(error.message)
             }
         }
-        setInputs({
-            name: "",
-            age: ""
-        })
     };
 
     const handleDelete = async (id) => {
         // console.log(id)
         try {
-            let resp = await axios.delete(`https://crudbackend-ruddy.vercel.app/users/${id}`)
+            let resp = await axios.delete(`https://crudbackend-ehtashamtoor.vercel.app/users/${id}`)
             if (resp.data.message) {
                 toast.success("user removed")
                 setUsers(resp.data.users)
@@ -94,7 +106,7 @@ const Home = () => {
     };
     const getsingleUser = async (id) => {
         try {
-            let resp = await axios.get(`https://crudbackend-ruddy.vercel.app/users/${id}`)
+            let resp = await axios.get(`https://crudbackend-ehtashamtoor.vercel.app/users/${id}`)
             if (resp.data.message) {
                 setSingleUser(resp.data.user)
             }
@@ -112,11 +124,11 @@ const Home = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col">
                         <label>Name</label>
-                        <input name="name" value={inputs.name} onChange={handleChange} required />
+                        <input name="name" value={inputs.name} onChange={handleChange} />
                     </div>
                     <div className="flex flex-col">
                         <label>Age</label>
-                        <input name="age" value={inputs.age} onChange={handleChange} required />
+                        <input name="age" value={inputs.age} onChange={handleChange} />
                     </div>
                     <button type="submit" className="w-full bg-[#014d64] text-white mt-3">
                         {editClick ? "update" : "Add"}

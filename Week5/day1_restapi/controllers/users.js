@@ -1,21 +1,24 @@
 import { v4 as uuid } from 'uuid';
+import { validationResult } from 'express-validator';
 
 let users = [];
 
 export const getUsers = (req, res) => {
-    console.log(`Users in the database: ${users}`);
 
     res.send(users);
 }
 
 export const createUser = (req, res) => {
+    // Check for validation errors below
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.json({ message: false, errors: errors.array() });
+    }
     const user = req.body;
 
     users.push({ ...user, id: uuid() });
 
     res.send({ message: true, users })
-
-    console.log(`User [${user.name}] added to the database.`);
 };
 
 export const getSingleUser = (req, res) => {
@@ -31,24 +34,25 @@ export const deleteUser = (req, res) => {
     users = users.filter((user) => user.id !== id);
 
     res.send({ message: true, users })
-
-    console.log(`user with id ${id} has been deleted`);
 };
 
 export const updateUser = (req, res) => {
+    // Check for validation errors below
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.json({ message: false, errors: errors.array() });
+    }
     const { id } = req.params;
     const { name, age } = req.body;
 
     const founduser = users.find((user) => user.id === id);
 
     if (name) {
-        founduser.name = req.body.name;
+        founduser.name = name;
     }
     if (age) {
-        founduser.age = req.body.age;
+        founduser.age = age;
     }
 
     res.send({ message: true, users })
-
-    console.log(`name has been updated to ${req.body.name}.age has been updated to ${req.body.age}`)
 };
