@@ -1,18 +1,12 @@
 <!-- **************************** Morning Standup meeting content  ************************************** -->
-<h1 align="center">WEEK 3 DAY 3</h1>
+<h1 align="center">WEEK 3 DAY 5(extra)</h1>
 
-<h3>MORNING STANDUP MEETING CONTENT</h3>
-will make FullStack Todo List  App
-in using node.js , react.js and express.js.
+<h3> CONTENT</h3>
 
+The task was to use implement authentication using firebase specifically with login with google
 
 <!-- **************************** Live Link of assignment  ************************************** -->
-https://fullstacktodosapp.vercel.app/
+
+https://uniquetodos.vercel.app/
 
 <!-- **************************** Evening Standup meeting content  ************************************** -->
-
-<h3>EVENING STANDUP MEETING CONTENT</h3>
-
-made FullStack Todo List  App
-in using node.js , react.js and express.js.
-app is done with functionality
