@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useEffect } from "react";
@@ -14,13 +15,11 @@ const AuthContext = createContext();
 export const AuthcontextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const emailPass = async (email, password) => {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(userCredential);
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const loginUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleSignin = async () => {
@@ -42,7 +41,9 @@ export const AuthcontextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ googleSignin, logOut, user, emailPass }}>
+    <AuthContext.Provider
+      value={{ googleSignin, logOut, user, loginUser, createUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

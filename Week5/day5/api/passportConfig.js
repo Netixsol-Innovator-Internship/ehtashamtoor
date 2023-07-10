@@ -15,7 +15,7 @@ function initialize(passport) {
     try {
       if (await bcrypt.compare(password, user.password)) {
         // console.log("me here");
-        return done(null, user);
+        return done(null, user, { message: "Login Success" });
       } else {
         return done(null, false, { message: "Password incorrect" });
       }
@@ -28,14 +28,15 @@ function initialize(passport) {
 
   passport.serializeUser((user, done) => {
     console.log("inside serializeUser");
-    // console.log(user.id);
-    return done(null, user._id);
+    // console.log("user.id", user.id);
+    return done(null, user.id);
   });
 
   passport.deserializeUser(async (id, done) => {
     console.log("inside deserializeUser");
     try {
       const user = await userObj.findById(id);
+      // console.log("de user:::", user);
       if (user) {
         done(null, user);
       }

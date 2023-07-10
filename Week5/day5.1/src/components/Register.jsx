@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "../Schemas";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
+import { auth } from "../firebase";
+import { useEffect } from "react";
 
 export default function Register() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,24 +18,28 @@ export default function Register() {
     resolver: yupResolver(RegisterSchema),
   });
 
+  const { createUser, user } = useAuth();
+
   const onSubmit = async (data) => {
     console.log(data);
 
     try {
-      let resp = await axios.post(
-        `${process.env.REACT_APP_URL}/register`,
-        data
-      );
-
-      if (resp.data.message) {
-        toast.success("User Created");
-      } else {
-        toast.error("User already exists");
-      }
+      const userCredential = await createUser(data.email, data.password);
+      console.log("signin....", userCredential);
+      toast.success("user created");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("User Exists. login instead");
+      }
     }
   };
+  useEffect(() => {
+    if (user !== null) {
+      navigate("/");
+      toast.success("login success");
+    }
+  }, [user]);
 
   return (
     <>

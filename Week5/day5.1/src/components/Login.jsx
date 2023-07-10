@@ -16,7 +16,7 @@ export default function Login() {
   } = useForm({
     resolver: yupResolver(LoginSchema),
   });
-  const { googleSignin, user, emailPass } = useAuth();
+  const { googleSignin, user, loginUser } = useAuth();
 
   const handleGoogleSignin = async () => {
     try {
@@ -25,7 +25,7 @@ export default function Login() {
       console.log(error.message);
     }
   };
-  
+
   useEffect(() => {
     if (user !== null) {
       navigate("/");
@@ -36,10 +36,18 @@ export default function Login() {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      emailPass(data.email, data.password);
+      await loginUser(data.email, data.password);
     } catch (error) {
       const errorMessage = error.message;
       console.log(errorMessage);
+      if (error.code === "auth/user-not-found") {
+        toast.error("No user with this email");
+      } else if (error.code === "auth/wrong-password") {
+        console.log("Incorrect password");
+        toast.error("Email or password incorrect");
+      } else {
+        console.log("Error:", error.message);
+      }
     }
   };
   return (

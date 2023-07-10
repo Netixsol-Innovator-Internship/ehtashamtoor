@@ -8,16 +8,19 @@ const userObj = require("./models/User");
 const passport = require("passport");
 const initialize = require("./passportConfig");
 const session = require("express-session");
+const flash = require("express-flash");
+const { redirect } = require("react-router-dom");
 // const cookieParser = require("cookie-parser");
 
 const app = express();
 
 dotenv.config();
 const PORT = process.env.PORT;
-
+connectDB();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(flash());
+initialize(passport);
 app.use(
   session({
     secret: process.env.mySecret,
@@ -29,12 +32,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-initialize(passport);
-
 // console.log(PORT);
-app.get("/", (req, res) => {
-  console.log(req.isAuthenticated());
-  // return res.send({ message: "redirect to home" });
+app.get("/", checkAuthenticated, (req, res) => {
+  console.log(req.isAuthenticated(), req.user);
+  return res.send({ message: "redirect to home" });
 });
 
 // register route
@@ -69,46 +70,52 @@ app.post("/register", async (req, res) => {
 app.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/success",
+    failureFlash: true,
+    successFlash: true,
     failureRedirect: "/failure",
+    successRedirect: "/success",
   })
 );
 
+app.get("/failure", (req, res) => {
+  console.log("failure>>>>", req.isAuthenticated());
+});
 app.get("/success", (req, res) => {
-  console.log(req.isAuthenticated())
+  console.log(req);
   if (req.isAuthenticated()) {
-    res.status(200).json({ message: "Login successful", user: req.user });
-  } else {
-    res.status(401).json({ message: "Unauthorized" });
+    console.log("authenticated");
+    res.send({ message: "Login Success" });
   }
 });
 
-app.get("/failure", (req, res) => {
-  console.log(req.isAuthenticated())
-  res.status(401).json({ message: "Login failed" });
-});
-
-// (req, res, next) => {
-//   passport.authenticate("local",
-//   (err, user, info) => {
-//     if (err) {
-//       // console.log(err);
-//       throw err;
-//     }
-//     if (info) {
-//       // console.log(info);
-//       return res.send({ message: info.message });
-//     }
-//     if (user) {
-//       // console.log(user);
-//       req.logIn(user, (err) => {
-//         if (err) throw err;
-//         req.user = user;
+// app.post("/login", (req, res, next) => {
+//   passport.authenticate(
+//     "local",
+//     {
+//       failureFlash: true,
+//       successFlash: true,
+//       failureRedirect: "/failure",
+//       successRedirect: "/success",
+//     },
+//     (err, user, info) => {
+//       if (err) {
+//         // console.log(err);
+//         throw err;
+//       }
+//       if (info) {
+//         // console.log(info);
+//         return res.send({ message: info.message });
+//       }
+//       if (user) {
+//         console.log(user);
+//         req.logIn(user, (err) => {
+//           if (err) throw err;
 //         return res.send({ message: "Login Success", user });
-//       });
+//         });
+//       }
 //     }
-//   })(req, res, next);
-// }
+//   )(req, res, next);
+// });
 
 app.post("/addTodo", [body("newTodo.value").notEmpty()], (req, res) => {
   const errors = validationResult(req);
@@ -168,17 +175,16 @@ function checkAuthenticated(req, res, next) {
 function checkNotAuthenticated(req, res, next) {
   console.log("into not check auth", req.isAuthenticated());
   if (req.isAuthenticated()) {
-    return res.send({ message: "No user present" });
+    return res.send({ message: "redirect to home" });
   }
 
   return next();
 }
 
 // *************************** Connect app to MongoDB ********************
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log("<<< Server is up and running >>>");
-  });
+// connectDB().then(() => {
+app.listen(PORT, () => {
+  console.log("<<< Server is up and running >>>");
 });
-
+// });
 module.exports = app;

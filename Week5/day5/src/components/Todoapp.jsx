@@ -9,11 +9,15 @@ const Todoapp = () => {
   const [todos, setTodos] = useState([]);
 
   const getTodos = async () => {
-    let resp = await axios.get(`${process.env.REACT_APP_URL}/`);
+    let resp = await axios.get(`${process.env.REACT_APP_URL}/`, {
+      withCredentials: true,
+    });
     console.log(resp.data.message);
 
     if (resp.data.message === "redirect to login") {
       navigate("/login");
+    } else if (resp.data.message === "redirect to home") {
+      navigate("/");
     }
   };
 
