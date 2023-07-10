@@ -9,8 +9,6 @@ const passport = require("passport");
 const initialize = require("./passportConfig");
 const session = require("express-session");
 const flash = require("express-flash");
-const { redirect } = require("react-router-dom");
-// const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -28,16 +26,26 @@ app.use(
     saveUninitialized: false,
   })
 );
-// app.use(cookieParser(process.env.mySecret));
 app.use(passport.initialize());
 app.use(passport.session());
+// https://todoappauth.vercel.app
 
-// console.log(PORT);
 app.get("/", checkAuthenticated, (req, res) => {
-  console.log(req.isAuthenticated(), req.user);
+  // console.log(req.isAuthenticated(), req.user);
   return res.send({ message: "redirect to home" });
 });
 
+app.get("/checkauth", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send({ message: "auth" });
+  }
+});
+
+app.get("/logout", (req, res) => {
+  req.logOut(() => {});
+  console.log(req.isAuthenticated());
+  res.send({ message: "redirect to login" });
+});
 // register route
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -81,41 +89,12 @@ app.get("/failure", (req, res) => {
   console.log("failure>>>>", req.isAuthenticated());
 });
 app.get("/success", (req, res) => {
-  console.log(req);
+  // console.log(req.user);
   if (req.isAuthenticated()) {
     console.log("authenticated");
     res.send({ message: "Login Success" });
   }
 });
-
-// app.post("/login", (req, res, next) => {
-//   passport.authenticate(
-//     "local",
-//     {
-//       failureFlash: true,
-//       successFlash: true,
-//       failureRedirect: "/failure",
-//       successRedirect: "/success",
-//     },
-//     (err, user, info) => {
-//       if (err) {
-//         // console.log(err);
-//         throw err;
-//       }
-//       if (info) {
-//         // console.log(info);
-//         return res.send({ message: info.message });
-//       }
-//       if (user) {
-//         console.log(user);
-//         req.logIn(user, (err) => {
-//           if (err) throw err;
-//         return res.send({ message: "Login Success", user });
-//         });
-//       }
-//     }
-//   )(req, res, next);
-// });
 
 app.post("/addTodo", [body("newTodo.value").notEmpty()], (req, res) => {
   const errors = validationResult(req);
@@ -172,19 +151,9 @@ function checkAuthenticated(req, res, next) {
 
   return res.send({ message: "redirect to login" });
 }
-function checkNotAuthenticated(req, res, next) {
-  console.log("into not check auth", req.isAuthenticated());
-  if (req.isAuthenticated()) {
-    return res.send({ message: "redirect to home" });
-  }
-
-  return next();
-}
 
 // *************************** Connect app to MongoDB ********************
-// connectDB().then(() => {
 app.listen(PORT, () => {
   console.log("<<< Server is up and running >>>");
 });
-// });
 module.exports = app;

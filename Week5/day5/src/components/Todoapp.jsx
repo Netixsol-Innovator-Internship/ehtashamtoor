@@ -30,8 +30,29 @@ const Todoapp = () => {
 
     // apply code here to send data
   };
+
+  const handleLogout = async () => {
+    try {
+      let resp = await axios.get(`${process.env.REACT_APP_URL}/logout`, {
+        withCredentials: true,
+      });
+      if (resp.data.message === "redirect to login") {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex flex-col items-center gap-8 bg-gradient-to-r from-[#622a95] to-[#1c3160] w-screen h-screen">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-base py-1 px-2 rounded my-4"
+        onClick={() => {
+          handleLogout();
+        }}
+      >
+        Logout
+      </button>
       <h1 className="text-4xl font-semibold my-10 text-white">TODO UNIQUE</h1>
       <div className="w-fit lg:w-4/12">
         <form

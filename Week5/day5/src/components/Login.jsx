@@ -1,11 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../Schemas";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useLayoutEffect } from "react";
-axios.defaults.withCredentials = false;
 
 export default function Login() {
   const navigate = useNavigate();
@@ -42,19 +40,7 @@ export default function Login() {
       console.log(error);
     }
   };
-
-  const checkAuth = async () => {
-    const resp = await axios.get(`${process.env.REACT_APP_URL}/login`);
-    if (resp.data.message === "redirect to home") {
-      navigate("/");
-    } else if (resp.data.message === "redirect to login") {
-      navigate("/login");
-    }
-  };
-
-  useLayoutEffect(() => {
-    // checkAuth();
-  }, []);
+  
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gradient-to-r from-[#622a95] to-[#1c3160] w-screen h-screen">
