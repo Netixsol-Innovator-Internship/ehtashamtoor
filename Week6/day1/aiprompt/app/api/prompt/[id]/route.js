@@ -21,6 +21,7 @@ export const GET = async (req, { params }) => {
 // patch request
 export const PATCH = async (req, { params }) => {
   const { prompt, tag } = await req.json();
+  console.log(prompt, tag)
 
   try {
     await connectDb();

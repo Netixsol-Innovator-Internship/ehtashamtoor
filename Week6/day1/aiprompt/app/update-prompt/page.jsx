@@ -9,6 +9,7 @@ const UpdatePrompt = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
+  // console.log("id....", promptId);
 
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const [submitting, setIsSubmitting] = useState(false);
@@ -41,6 +42,7 @@ const UpdatePrompt = () => {
           tag: post.tag,
         }),
       });
+      console.log(response);
 
       if (response.ok) {
         router.push("/");
@@ -58,7 +60,7 @@ const UpdatePrompt = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={updatePrompt}
+      createPost={updatePrompt}
     />
   );
 };
