@@ -16,7 +16,7 @@ const EditProduct = () => {
         const resp = await axios.get(`/api/products?id=${id}`);
 
         if (resp.data) {
-          console.log(resp.data);
+          // console.log(resp.data);
           setProductInfo(resp.data);
         }
       } catch (error) {
