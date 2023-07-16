@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
-// import Logo from "@/components/Logo";
+import Logo from "@/components/Logo";
 
 export default function Nav({ show }) {
   const inactiveLink = "flex gap-2 p-1 pr-10";
-  const activeLink = inactiveLink + " bg-white rounded-l-lg text-blue-900";
+  const activeLink = inactiveLink + " bg-highlight text-primary rounded-l-lg";
   const inactiveIcon = "w-6 h-6";
   const activeIcon = inactiveIcon + " text-primary";
   const router = useRouter();
@@ -18,10 +18,12 @@ export default function Nav({ show }) {
     <aside
       className={
         (show ? "left-0" : "-left-full") +
-        " top-0 text-white p-4 pr-0 fixed w-full bg-bgGray h-full md:static md:w-auto transition-all"
+        " top-0  p-4 pr-0 fixed w-full bg-bgGray h-full md:static md:w-auto transition-all"
       }
     >
-      <div className="mb-4 mr-4">{/* <Logo /> */}</div>
+      <div className="mb-4 mr-4">
+        <Logo />
+      </div>
       <nav className="flex flex-col gap-2 text-lg">
         <Link
           href={"/"}
@@ -43,6 +45,7 @@ export default function Nav({ show }) {
           </svg>
           Dashboard
         </Link>
+
         <Link
           href={"/products"}
           className={pathname.includes("/products") ? activeLink : inactiveLink}
@@ -65,6 +68,7 @@ export default function Nav({ show }) {
           </svg>
           Products
         </Link>
+
         <Link
           href={"/categories"}
           className={

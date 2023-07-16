@@ -2,11 +2,13 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 // import multer from "multer";
 import mongoose from "mongoose";
+import { isAdmin } from "./auth/[...nextauth]";
 
 export default async function handle(req, res) {
   const { method } = req;
 
-  const kya = await mongooseConnect();
+  await mongooseConnect();
+  await isAdmin(req, res);
 
   if (method === "GET") {
     if (req.query?.id) {
@@ -39,14 +41,16 @@ export default async function handle(req, res) {
 
   if (method === "POST") {
     try {
-      const { title, description, price, images } = req.body;
+      const { title, description, price, images, category, properties } =
+        req.body;
 
       // check extensions
       const extensions = ["jpg", "jpeg", "svg", "png", "gif", "WebP"];
       images.map(({ url }) => {
         const ext = url.split(".").pop();
         if (!extensions.includes(ext)) {
-          return res.status(400).json({
+          return res.status(400).send({
+            success: false,
             message: "image format not supported",
           });
         }
@@ -57,9 +61,11 @@ export default async function handle(req, res) {
         description,
         price,
         images,
+        category,
+        properties,
       });
       if (ProductDoc) {
-        res.json({ ProductDoc, message: "product created" });
+        res.send({ ProductDoc, success: true, message: "product created" });
       }
     } catch (error) {
       console.log(error.message);
@@ -67,11 +73,18 @@ export default async function handle(req, res) {
   }
 
   if (method === "PUT") {
-    const { title, description, price, _id, images } = req.body;
+    const { title, description, price, _id, images, properties, category } =
+      req.body;
 
-    await Product.updateOne({ _id }, { title, description, price, images });
-
-    res.status(200).json({ message: true });
+    const updated = await Product.updateOne(
+      { _id },
+      { title, description, price, images, properties, category }
+    );
+    if (updated) {
+      res.status(200).json({ success: true, message: "Product updated" });
+    } else {
+      res.json({ success: false, message: "Cannot update product" });
+    }
 
     try {
     } catch (error) {
@@ -86,16 +99,22 @@ export default async function handle(req, res) {
         if (id) {
           const product = await Product.findByIdAndDelete(id);
           if (product) {
-            res.json({ product, message: true });
+            res.json({ product, success: true, message: "Product deleted" });
           } else {
-            res.status(404).json({ message: "Product not found" });
+            res
+              .status(404)
+              .json({ success: false, message: "Product not found" });
           }
         } else {
-          res.status(400).json({ message: "Invalid ID parameter" });
+          res
+            .status(400)
+            .json({ success: false, message: "Invalid ID parameter" });
         }
       } catch (error) {
         console.log(error.message);
-        res.status(500).json({ message: "Internal server error" });
+        res
+          .status(500)
+          .json({ success: false, message: "Internal server error" });
       }
     }
   }

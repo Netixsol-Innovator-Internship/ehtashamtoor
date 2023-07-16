@@ -23,7 +23,7 @@ label {
   @apply text-blue-900 font-bold;
 }
 .btn-primary {
-  @apply text-white px-4 py-1 rounded-sm shadow-sm;
+  @apply text-white bg-primary px-4 py-1 shadow-sm;
 }
 table.basic {
   @apply w-full bg-white rounded-sm shadow-md;
@@ -46,5 +46,5 @@ table.basic a {
   @apply bg-red-200 text-red-600 px-4 py-1 rounded-sm shadow-sm;
 }
 .btn-default {
-  @apply bg-white text-gray-800 px-4 py-1 rounded-sm border border-gray-200 shadow-sm;
+  @apply bg-gray-600 text-white px-4 py-1 rounded-sm border border-gray-200 shadow-sm;
 }

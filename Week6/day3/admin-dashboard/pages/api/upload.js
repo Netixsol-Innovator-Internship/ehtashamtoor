@@ -1,6 +1,10 @@
+import { mongooseConnect } from "@/lib/mongoose";
 import multiparty from "multiparty";
+import { isAdmin } from "./auth/[...nextauth]";
 
 export default async function handle(req, res) {
+  await mongooseConnect();
+  await isAdmin();
   const form = new multiparty.Form();
 
   const { fields, files } = await new Promise((resolve, reject) => {

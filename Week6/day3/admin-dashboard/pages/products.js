@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -22,15 +22,10 @@ const Products = () => {
     getProducts();
   }, []);
 
-  // const deleteProduct = ({ productID }) => {
-  //   console.log(productID);
-  //   // setOpen(true);
-  // };
-
   return (
     <Layout>
       <Link
-        className="bg-blue-900 text-white rounded-md py-1 px-2 font-semibold"
+        className="btn-primary "
         href={"/products/new"}
       >
         Add new product
