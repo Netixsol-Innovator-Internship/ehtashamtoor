@@ -59,13 +59,15 @@ const Price = styled.div`
 export default function ProductBox({ _id, title, description, price, images }) {
   const { addProduct } = useContext(CartContext);
   const url = "/product/" + _id;
+  const image = images[0].url;
   return (
     <ProductWrapper>
       <WhiteBox href={url}>
         <div>
-          {images.map(({ url, public_id }) => {
+          {<img src={image} alt="productimage" />}
+          {/* {images.map(({ url, public_id }) => {
             return <img key={public_id} src={url} alt="productimage" />;
-          })}
+          })} */}
         </div>
       </WhiteBox>
       <ProductInfoBox>

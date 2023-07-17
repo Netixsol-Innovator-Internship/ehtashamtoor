@@ -158,7 +158,8 @@ export default function CartPage() {
                     <tr key={product._id}>
                       <ProductInfoCell>
                         <ProductImageBox>
-                          {product.images.map(({ url, public_id }) => {
+                          <img src={product.images[0].url} alt="productiamge" />
+                          {/* {product.images.map(({ url, public_id }) => {
                             return (
                               <img
                                 key={public_id}
@@ -166,7 +167,7 @@ export default function CartPage() {
                                 alt="productImages"
                               />
                             );
-                          })}
+                          })} */}
                         </ProductImageBox>
                         {product.title}
                       </ProductInfoCell>
