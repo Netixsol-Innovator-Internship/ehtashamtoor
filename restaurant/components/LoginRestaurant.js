@@ -1,9 +1,10 @@
 import { LoginSchemaRes } from "@/Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const LoginRestaurant = () => {
   const {
@@ -13,27 +14,31 @@ const LoginRestaurant = () => {
   } = useForm({
     resolver: yupResolver(LoginSchemaRes),
   });
+  const router = useRouter();
+  const [ErrorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
     const { username, password } = data;
-    console.log(data);
-    // try {
-    //   // Use the signIn function to authenticate the user
-    //   await signIn("Restaurant Login", {
-    //     username: username,
-    //     password: password,
-    //     redirect: true,
-    //     callbackUrl: "/restaurant/dashboard",
-    //   });
-    //   // console.log("result::::" + result);
+    // console.log(data);
+    try {
+      // Use the signIn function to authenticate the user
+      const result = await signIn("restaurant", {
+        username: username,
+        password: password,
+        redirect: false,
+      });
+      console.log(result);
+      if (result?.error !== null) {
+        setErrorMessage(result.error);
+      }
 
-    //   if (result?.url) {
-    //     console.log(result);
-    //     window.location.href = result.url;
-    //   }
-    // } catch (error) {
-    //   console.error("Authentication failed:", error);
-    // }
+      if (result?.status === 200) {
+        console.log(result);
+        router.push("/restaurant/dashboard");
+      }
+    } catch (error) {
+      console.error("Authentication failed:", error);
+    }
   };
   return (
     <section>
@@ -60,27 +65,28 @@ const LoginRestaurant = () => {
             <h1 className="text-center text-3xl text-blue-600 font-bold hidden md:block">
               Restaurants App
             </h1>
+            <h1 className="text-red-500 text-2xl">{ErrorMessage}</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-8 grid grid-cols-6 gap-6"
             >
               <div className="col-span-12 h-[4.5rem]">
                 <label
-                  htmlFor="Username"
+                  htmlFor="username"
                   className="block text-sm font-semibold "
                 >
                   Username
                 </label>
                 <input
-                  type="Username"
-                  id="Username"
-                  {...register("Username")}
-                  name="Username"
+                  type="username"
+                  id="username"
+                  {...register("username")}
+                  name="username"
                   className="mt-1 w-full rounded-md block border-gray-200 bg-white text-lg text-gray-700 shadow-md p-1"
                 />
-                {errors.Username && (
+                {errors.username && (
                   <span className="text-red-600 text-sm">
-                    {errors.Username.message}
+                    {errors.username.message}
                   </span>
                 )}
               </div>
@@ -132,11 +138,3 @@ const LoginRestaurant = () => {
 };
 
 export default LoginRestaurant;
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  };
-}

@@ -11,7 +11,8 @@ export default async function handle(req, res) {
   }
 
   if (method === "POST") {
-    const { name, price, category, images, deliveryType } = req.body;
+    const { name, price, category, images, deliveryType, restaurant } =
+      req.body;
 
     const foodExists = await FoodItem.findOne({ name });
     if (foodExists) {
@@ -24,6 +25,7 @@ export default async function handle(req, res) {
       category,
       images,
       deliveryType,
+      restaurant,
     });
 
     await FoodDoc.save();

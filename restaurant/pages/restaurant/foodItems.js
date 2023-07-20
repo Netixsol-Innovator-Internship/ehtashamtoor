@@ -1,6 +1,8 @@
 import PageHeader from "@/components/PageHeader";
 import Spinner from "@/components/Spinner";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { withSwal } from "react-sweetalert2";
 
@@ -17,6 +19,8 @@ const FoodItems = ({ swal }) => {
   let [images, setImages] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   let [imageInfo, setImageInfo] = useState({});
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const getCategories = async () => {
     const resp = await axios.get("/api/categories");
@@ -37,6 +41,7 @@ const FoodItems = ({ swal }) => {
       category,
       images,
       deliveryType,
+      restaurant: session.user.id,
     };
 
     if (editedFood) {
@@ -46,6 +51,7 @@ const FoodItems = ({ swal }) => {
         setMessage(resp.data.message);
         setisError(false);
         // setName("");
+        setEditedFood(null);
         getFoods();
       } else {
         setMessage(resp.data.message);
@@ -138,6 +144,12 @@ const FoodItems = ({ swal }) => {
         }
       });
   };
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.push("/auth/signin/restaurant");
+    }
+  }, [session, router]);
   return (
     <div className="md:px-8 px-1 mt-5">
       <PageHeader heading="Food Items" />
@@ -230,8 +242,10 @@ const FoodItems = ({ swal }) => {
             <select
               required
               value={deliveryType}
+              className="font-normal"
               onChange={(e) => setDeliveryType(e.target.value)}
             >
+              <option value="">Choose delivery type</option>
               <option value="free">Free</option>
               <option value="paid">Paid</option>
             </select>
@@ -279,7 +293,7 @@ const FoodItems = ({ swal }) => {
                   <tr key={food._id}>
                     <td className="  py-2">{food.name}</td>
                     <td className="  py-2">{food.price}</td>
-                    <td className="  py-2">{food.category.name}</td>
+                    <td className="  py-2">{food.category?.name}</td>
                     <td className="hidden md:block  py-2">
                       {food.deliveryType}
                     </td>

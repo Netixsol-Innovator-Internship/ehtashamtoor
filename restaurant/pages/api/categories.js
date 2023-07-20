@@ -1,5 +1,7 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
+import { getServerSession } from "next-auth";
+import { getSession } from "next-auth/react";
 
 export default async function handle(req, res) {
   const { method } = req;
@@ -10,16 +12,17 @@ export default async function handle(req, res) {
     res.json(await Category.find());
   }
   if (method === "POST") {
-    const { name } = req.body;
+    const { name, restaurant } = req.body;
 
     const catExists = await Category.findOne({ name });
     if (catExists) {
       return res.send({ message: "Category exists", success: false });
     }
 
+
     const categoryDoc = await Category.create({
       name,
-      // add id of restaurant
+      restaurant,
     });
 
     res.send({ categoryDoc, message: "Category created", success: true });

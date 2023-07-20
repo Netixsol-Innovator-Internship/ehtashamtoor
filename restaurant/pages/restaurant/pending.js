@@ -1,6 +1,8 @@
 import OrderRow from "@/components/OrderRow";
 import PageHeader from "@/components/PageHeader";
-import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 const Pending = () => {
   const pendingOrdersData = [
@@ -23,6 +25,15 @@ const Pending = () => {
       price: "$8.49" /* other data */,
     },
   ];
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.push("/auth/signin/restaurant");
+    }
+  }, [session, router]);
+
   return (
     <div className="max-w-full md:px-8 mx-auto mt-8">
       <PageHeader heading={"Pending Orders"} />

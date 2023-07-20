@@ -1,18 +1,37 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Logo from "@/components/Logo";
 import AsideNav from "./AsideNav";
 import { useState } from "react";
 
 export default function Nav() {
+  const inactiveLink = "flex gap-2 p-1 pr-10 hover:bg-highlight";
+  const activeLink = inactiveLink + " bg-highlight";
   const [show, setShow] = useState(false);
   const router = useRouter();
   const { pathname } = router;
+  const { data: session } = useSession();
+  console.log(session);
+
+  // let restaurantName = "";
+  // let CustomerName = "";
+
+  // if (session?.user?.name) {
+  //   restaurantName =
+  //     session?.user?.name?.toUpperCase()[0] +
+  //     session?.user?.name?.toUpperCase()[1];
+  // } else if (session?.user?.email) {
+  //   CustomerName =
+  //     session?.user?.email?.toUpperCase()[0] +
+  //     session?.user?.email?.toUpperCase()[1];
+  // }
+
   async function logout() {
     await router.push("/");
     await signOut();
   }
+
   return (
     <header className="sticky top-0 bg-white shadow-md flex items-center justify-between md:px-8 px-2 py-2">
       {/* <!-- logo --> */}
@@ -20,6 +39,12 @@ export default function Nav() {
         <Link href="/">Restaurants</Link>
       </h1>
       <div className="md:hidden flex items-center p-4">
+        {session?.user && (
+          <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white">
+            {/* {restaurantName || CustomerName} */}
+          </button>
+        )}
+
         <button
           onClick={() => {
             setShow(true);
@@ -41,45 +66,91 @@ export default function Nav() {
       </div>
 
       {/* <!-- navigation --> */}
-      <nav className="font-semibold hidden md:block">
-        <ul className="flex items-center justify-center flex-wrap">
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer  md:text-sm text-[10px]">
-            <Link href="/restaurant/dashboard">Dashboard</Link>
-          </li>
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer  md:text-sm text-[10px]">
-            <Link href="/restaurant/pending">Pending</Link>
-          </li>
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer md:text-sm text-[10px]">
-            <Link href="/restaurant/accepted">Accepted</Link>
-          </li>
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer md:text-sm text-[10px]">
-            <Link href="/restaurant/delivered">Delivered</Link>
-          </li>
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer md:text-sm text-[10px]">
-            <Link href="/restaurant/categories">Categories</Link>
-          </li>
-          <li className="md:p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer md:text-sm text-[10px]">
-            <Link href="/restaurant/foodItems">FoodItems</Link>
-          </li>
-        </ul>
-      </nav>
+      {session?.user && (
+        <nav className="font-semibold hidden md:block">
+          <ul className="flex items-center justify-center flex-wrap">
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer  md:text-sm text-[10px] ${
+                pathname === "/restaurant/dashboard" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/dashboard">Dashboard</Link>
+            </li>
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer  md:text-sm text-[10px] ${
+                pathname === "/restaurant/pending" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/pending">Pending</Link>
+            </li>
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer md:text-sm text-[10px] ${
+                pathname === "/restaurant/accepted" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/accepted">Accepted</Link>
+            </li>
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer md:text-sm text-[10px] ${
+                pathname === "/restaurant/delivered" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/delivered">Delivered</Link>
+            </li>
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer md:text-sm text-[10px] ${
+                pathname === "/restaurant/categories"
+                  ? activeLink
+                  : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/categories">Categories</Link>
+            </li>
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer md:text-sm text-[10px] ${
+                pathname === "/restaurant/foodItems" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/restaurant/foodItems">FoodItems</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
 
       <AsideNav show={show} setShow={setShow} />
 
       {/* <!-- buttons ---> */}
-      <div className="hidden md:flex gap-2">
-        <Link
-          className="  py-2 md:px-3 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
-          href="/usertype/signin"
-        >
-          Sign In
-        </Link>
-        <Link
-          className=" py-2 md:px-3 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-          href={`/usertype/signup`}
-        >
-          Sign up
-        </Link>
+      <div className="hidden md:flex gap-2 items-center">
+        {session?.user ? (
+          <>
+            <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white">
+              {name}
+            </button>
+            <button
+              className="  py-2 md:px-3 bg-red-500 hover:bg-black text-sm text-white font-bold  rounded-xl transition duration-200"
+              onClick={() => {
+                logout();
+              }}
+            >
+              LogOut
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              className="  py-2 md:px-3 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold  rounded-xl transition duration-200"
+              href="/usertype/signin"
+            >
+              Sign In
+            </Link>
+            <Link
+              className=" py-2 md:px-3 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+              href={`/usertype/signup`}
+            >
+              Sign up
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

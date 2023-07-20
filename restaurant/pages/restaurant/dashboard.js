@@ -1,6 +1,18 @@
 import PageHeader from "@/components/PageHeader";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const DashboardPage = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+  console.log(session);
+
+  useEffect(() => {
+    if (!session) {
+      router.push("/auth/signin/restaurant");
+    }
+  }, [session, router]);
   return (
     <div class="flex flex-col">
       <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">

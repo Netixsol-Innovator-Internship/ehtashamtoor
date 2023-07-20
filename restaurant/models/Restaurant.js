@@ -1,4 +1,4 @@
-import mongoose, { model, Schema, models } from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
 const restaurantSchema = new Schema({
   name: {
@@ -20,6 +20,19 @@ const restaurantSchema = new Schema({
   },
   city: {
     type: String,
+  },
+  foodItems: [
+    {
+      foodItem: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "FoodItem",
+        // required: true,
+      },
+    },
+  ],
+  role: {
+    type: String,
+    default: "restaurant",
   },
 });
 

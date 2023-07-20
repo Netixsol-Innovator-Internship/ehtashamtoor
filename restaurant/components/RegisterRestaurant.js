@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const RegisterRestaurant = () => {
   const [Message, setMessage] = useState("");
   const [IsError, setIsError] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ const RegisterRestaurant = () => {
     // console.log(resp.data);
     if (resp.data.success) {
       setIsError(false);
+      router.push("/auth/signin/restaurant");
     } else {
       setIsError(true);
     }

@@ -1,6 +1,8 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { withSwal } from "react-sweetalert2";
 
@@ -10,6 +12,8 @@ const CatgoryPage = ({ swal }) => {
   const [Message, setMessage] = useState("");
   const [isError, setisError] = useState(false);
   const [editedCategory, setEditedCategory] = useState(null);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const getCategories = async () => {
     const resp = await axios.get("/api/categories");
@@ -27,11 +31,13 @@ const CatgoryPage = ({ swal }) => {
     // we will have restaurant from the session to send it to user
     const data = {
       name,
+      restaurant: session.user.id,
     };
 
     if (editedCategory) {
       data._id = editedCategory._id;
       const resp = await axios.put("/api/categories", data);
+      // console.log(resp.data.success);
       if (resp.data) {
         setName("");
         setEditedCategory(null);
@@ -82,6 +88,12 @@ const CatgoryPage = ({ swal }) => {
         }
       });
   }
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.push("/auth/signin/restaurant");
+    }
+  }, [session, router]);
 
   return (
     // <Layout>

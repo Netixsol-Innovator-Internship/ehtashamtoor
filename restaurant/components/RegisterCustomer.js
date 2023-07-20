@@ -1,8 +1,10 @@
-import { RegisterRes } from "@/Schema";
+import { RegisterCustomer } from "@/Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const RegisterRestaurant = () => {
   const {
@@ -11,13 +13,27 @@ const RegisterRestaurant = () => {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(RegisterRes),
+    resolver: yupResolver(RegisterCustomer),
   });
+  const router = useRouter();
 
   const onSubmit = async (data) => {
-    const { name, email, password, country, city } = data;
-    console.log(data);
+    const { name, email, password, country, city, phone } = data;
+    // console.log(data);
+    data = { name, email, password, country, city, phone };
 
+    try {
+      let resp = await axios.post("/api/signupCustomer", data);
+
+      if (resp.data.success) {
+        console.log(resp.data.message);
+        router.push("/")
+      } else {
+        console.log(resp.data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
     reset();
   };
   return (
@@ -75,6 +91,26 @@ const RegisterRestaurant = () => {
                 {errors.email && (
                   <span className="text-red-600 md:text-[15px] text-sm">
                     {errors.email.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-span-6 h-[4.6rem]">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-semibold  "
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  {...register("phone")}
+                  name="phone"
+                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-lg text-gray-700 shadow-md p-1"
+                />
+                {errors.phone && (
+                  <span className="text-red-600 md:text-[15px] text-sm">
+                    {errors.phone.message}
                   </span>
                 )}
               </div>
