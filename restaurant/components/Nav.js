@@ -33,7 +33,7 @@ export default function Nav() {
   }
 
   return (
-    <header className="sticky top-0 bg-white shadow-md flex items-center justify-between md:px-8 px-2 py-2">
+    <header className="sticky top-0 z-10 bg-white shadow-md flex items-center justify-between md:px-8 px-2 py-2">
       {/* <!-- logo --> */}
       <h1 className="mb-0 text-center">
         <Link href="/">Restaurants</Link>
@@ -117,9 +117,26 @@ export default function Nav() {
         </nav>
       )}
 
-      {
-        session?.user?.role === "Customer" && <nav className="hidden md:flex gap-2">customer navs</nav>
-      }
+      {session?.user?.role === "Customer" && (
+        <nav className="hidden md:flex gap-2">
+          <ul className="flex items-center justify-center flex-wrap">
+            <li
+              className={`md:p-4        hover:border-opacity-100   duration-200 cursor-pointer  md:text-sm text-[10px] ${
+                pathname === "/customer/homepage" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/customer/homepage">All Restaurants</Link>
+            </li>
+            <li
+              className={`md:p-4  hover:border-opacity-100   duration-200 cursor-pointer  md:text-sm text-[10px] ${
+                pathname === "/customer/orders" ? activeLink : inactiveLink
+              }`}
+            >
+              <Link href="/customer/orders">My Orders</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
 
       <AsideNav show={show} setShow={setShow} />
 

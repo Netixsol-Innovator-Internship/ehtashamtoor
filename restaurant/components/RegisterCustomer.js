@@ -27,7 +27,7 @@ const RegisterRestaurant = () => {
 
       if (resp.data.success) {
         console.log(resp.data.message);
-        router.push("/")
+        router.push("/auth/signin/customer")
       } else {
         console.log(resp.data.message);
       }

@@ -1,15 +1,18 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 
 export default async function handle(req, res) {
   const { method } = req;
 
   await mongooseConnect();
 
+  const session = await getSession({ req });
+  // console.log(session);
+
   if (method === "GET") {
-    res.json(await Category.find());
+    res.json(await Category.find({ restaurant: session?.user?.id }));
   }
   if (method === "POST") {
     const { name, restaurant } = req.body;
@@ -18,7 +21,6 @@ export default async function handle(req, res) {
     if (catExists) {
       return res.send({ message: "Category exists", success: false });
     }
-
 
     const categoryDoc = await Category.create({
       name,

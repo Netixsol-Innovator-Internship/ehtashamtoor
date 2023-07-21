@@ -1,20 +1,22 @@
-import { model, models, Schema } from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
 const OrderSchema = new Schema({
   customerName: {
     type: String,
     required: true,
   },
+  customerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Customer",
+  },
   foodItems: [
     {
       foodItem: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "FoodItem",
-        required: true,
       },
       quantity: {
         type: Number,
-        required: true,
       },
     },
   ],
@@ -26,6 +28,10 @@ const OrderSchema = new Schema({
   restaurant: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Restaurant",
+    required: true,
+  },
+  totalPrice: {
+    type: String,
     required: true,
   },
 });

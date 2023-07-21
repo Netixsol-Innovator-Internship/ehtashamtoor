@@ -43,6 +43,7 @@ const FoodItems = ({ swal }) => {
       deliveryType,
       restaurant: session.user.id,
     };
+    console.log(data)
 
     if (editedFood) {
       data._id = editedFood._id;

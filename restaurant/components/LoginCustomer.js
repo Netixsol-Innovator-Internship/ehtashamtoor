@@ -33,7 +33,7 @@ const LoginCustomer = () => {
 
       if (result?.status === 200) {
         console.log(result);
-        router.push("/");
+        router.push("/customer/homepage");
       }
     } catch (error) {
       console.error("Authentication failed:", error);

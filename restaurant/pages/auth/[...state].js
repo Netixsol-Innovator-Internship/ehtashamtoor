@@ -6,6 +6,7 @@ import LoginPage from "../signin";
 const Page = () => {
   const router = useRouter();
   const { state } = router.query;
+  // console.log(state);
 
   if (Array.isArray(state) && state[0] === "signup") {
     const user = state[1];

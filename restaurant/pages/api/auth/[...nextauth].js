@@ -69,7 +69,7 @@ export const AuthOptions = {
         if (!passwordsMatch) {
           throw new Error("Invalid password");
         }
-        console.log("Customer--->>>", user);
+        // console.log("Customer--->>>", user);
 
         return user;
       },
@@ -78,12 +78,14 @@ export const AuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     jwt: ({ token, user, account }) => {
-      if (account) {
+      if (user) {
         token.accessToken = account.access_token;
         token.id = user.id;
         token.role = user.role;
-        console.log("tokenjwt", token);
-        console.log("userjwt", user);
+        // console.log("user.....", user);
+        token.name = user?.name;
+        // console.log("tokenjwt", token);
+        // console.log("userjwt", user);
       }
       return token;
     },
@@ -91,8 +93,9 @@ export const AuthOptions = {
       if (token) {
         session.user.id = token.id;
         session.user.role = token.role;
+        session.user.name = token.name;
       }
-      console.log("sessionjwt", session);
+      // console.log("sessionjwt", session);
       return session;
     },
   },

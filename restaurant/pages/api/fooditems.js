@@ -1,18 +1,26 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { FoodItem } from "@/models/FoodItem";
+import { getSession } from "next-auth/react";
 
 export default async function handle(req, res) {
   const { method } = req;
 
   await mongooseConnect();
+  const session = await getSession({ req });
+  // console.log(session);
 
   if (method === "GET") {
-    res.json(await FoodItem.find().populate("category"));
+    res.json(
+      await FoodItem.find({ restaurant: session?.user?.id }).populate(
+        "category"
+      )
+    );
   }
 
   if (method === "POST") {
     const { name, price, category, images, deliveryType, restaurant } =
       req.body;
+      console.log(req.body)
 
     const foodExists = await FoodItem.findOne({ name });
     if (foodExists) {
