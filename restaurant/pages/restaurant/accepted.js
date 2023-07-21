@@ -30,7 +30,7 @@ const Accepted = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!session?.user) {
+    if (!session?.user?.role === "restaurant") {
       router.push("/auth/signin/restaurant");
     }
   }, [session, router]);

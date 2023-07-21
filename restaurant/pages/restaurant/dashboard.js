@@ -9,7 +9,7 @@ const DashboardPage = () => {
   console.log(session);
 
   useEffect(() => {
-    if (!session) {
+    if (!session?.user?.role === "restaurant") {
       router.push("/auth/signin/restaurant");
     }
   }, [session, router]);

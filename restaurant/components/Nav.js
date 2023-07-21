@@ -66,7 +66,7 @@ export default function Nav() {
       </div>
 
       {/* <!-- navigation --> */}
-      {session?.user && (
+      {session?.user?.role === "restaurant" && (
         <nav className="font-semibold hidden md:block">
           <ul className="flex items-center justify-center flex-wrap">
             <li
@@ -116,6 +116,10 @@ export default function Nav() {
           </ul>
         </nav>
       )}
+
+      {
+        session?.user?.role === "Customer" && <nav className="hidden md:flex gap-2">customer navs</nav>
+      }
 
       <AsideNav show={show} setShow={setShow} />
 

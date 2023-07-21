@@ -25,6 +25,7 @@ export const AuthOptions = {
 
         await mongooseConnect();
         const { username, password } = credentials;
+        console.log("restaurant login info", username, password);
         // console.log("hey................hey...............hey");
         const user = await getUserByName(username);
         // const user = await Restaurant.findOne({ name: username });
@@ -68,7 +69,7 @@ export const AuthOptions = {
         if (!passwordsMatch) {
           throw new Error("Invalid password");
         }
-        console.log("user--->>>", user);
+        console.log("Customer--->>>", user);
 
         return user;
       },
@@ -80,16 +81,18 @@ export const AuthOptions = {
       if (account) {
         token.accessToken = account.access_token;
         token.id = user.id;
-        // console.log("token--->", token);
-        console.log("user--->", user);
+        token.role = user.role;
+        console.log("tokenjwt", token);
+        console.log("userjwt", user);
       }
       return token;
     },
     session: ({ token, session }) => {
       if (token) {
         session.user.id = token.id;
+        session.user.role = token.role;
       }
-      // console.log("session---->", session);
+      console.log("sessionjwt", session);
       return session;
     },
   },
