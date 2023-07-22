@@ -1,3 +1,7 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // Other ESLint rules...
+    "import/no-anonymous-default-export": "off"
+  }
 }

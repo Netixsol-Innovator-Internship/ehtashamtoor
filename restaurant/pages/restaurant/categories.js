@@ -1,5 +1,5 @@
-
 import PageHeader from "@/components/PageHeader";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -96,93 +96,95 @@ const CatgoryPage = ({ swal }) => {
   }, [session, router]);
 
   return (
-    // <Layout>
-    <div className="px-8 mt-5">
-      <PageHeader heading="Categories" />
-      <div>
-        <h1
-          className={`text-2xl ${isError ? "text-red-500" : "text-green-500"}`}
-        >
-          {Message}
-        </h1>
-      </div>
-      <label>
-        {" "}
-        {editedCategory
-          ? `Edit Category: ${editedCategory.name}`
-          : "New Category"}
-      </label>
-      <form className="flex gap-3 flex-col" onSubmit={saveCategory}>
-        <div className="flex gap-1">
-          <input
-            type="text"
-            placeholder="Category name"
-            className="font-normal mb-0"
-            value={name}
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        <div className="flex gap-1">
-          {editedCategory && (
-            <button
-              type="button"
-              onClick={() => {
-                setEditedCategory(null);
-                setName("");
-              }}
-              className="btn-default"
-            >
-              Cancel
-            </button>
-          )}
-          <button
-            className="btn-primary py-1 h-[2.5rem] self-start"
-            type="submit"
+    <ProtectedRoute>
+      <div className="px-8 mt-5">
+        <PageHeader heading="Categories" />
+        <div>
+          <h1
+            className={`text-2xl ${
+              isError ? "text-red-500" : "text-green-500"
+            }`}
           >
-            Save
-          </button>
+            {Message}
+          </h1>
         </div>
-      </form>
+        <label>
+          {" "}
+          {editedCategory
+            ? `Edit Category: ${editedCategory.name}`
+            : "New Category"}
+        </label>
+        <form className="flex gap-3 flex-col" onSubmit={saveCategory}>
+          <div className="flex gap-1">
+            <input
+              type="text"
+              placeholder="Category name"
+              className="font-normal mb-0"
+              value={name}
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
 
-      {!editedCategory && (
-        <table className="basic mt-2 ">
-          <thead>
-            <tr>
-              <td>Category Name</td>
-              <td>Actions</td>
-            </tr>
-          </thead>
+          <div className="flex gap-1">
+            {editedCategory && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditedCategory(null);
+                  setName("");
+                }}
+                className="btn-default"
+              >
+                Cancel
+              </button>
+            )}
+            <button
+              className="btn-primary py-1 h-[2.5rem] self-start"
+              type="submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
 
-          <tbody>
-            {categories.length > 0 &&
-              categories.map((category) => {
-                return (
-                  <tr key={category._id}>
-                    <td>{category.name}</td>
-                    <td>
-                      <button
-                        onClick={() => editCategory(category)}
-                        className="btn-default hover:bg-blue-500 mr-1 mt-1"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => deleteCategory(category)}
-                        className="btn-default hover:bg-blue-500 mt-1"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-      )}
-    </div>
-    // </Layout>
+        {!editedCategory && (
+          <table className="basic mt-2 ">
+            <thead>
+              <tr>
+                <td>Category Name</td>
+                <td>Actions</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              {categories.length > 0 &&
+                categories.map((category) => {
+                  return (
+                    <tr key={category._id}>
+                      <td>{category.name}</td>
+                      <td>
+                        <button
+                          onClick={() => editCategory(category)}
+                          className="btn-default hover:bg-blue-500 mr-1 mt-1"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => deleteCategory(category)}
+                          className="btn-default hover:bg-blue-500 mt-1"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </ProtectedRoute>
   );
 };
 
