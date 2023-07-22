@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const RegisterRestaurant = () => {
   const {
@@ -27,7 +28,8 @@ const RegisterRestaurant = () => {
 
       if (resp.data.success) {
         // console.log(resp.data.message);
-        router.push("/auth/signin/customer")
+        router.push("/auth/signin/customer");
+        toast.success("Customer Added");
       } else {
         console.log(resp.data.message);
       }

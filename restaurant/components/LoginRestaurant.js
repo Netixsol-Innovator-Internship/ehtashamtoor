@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import Logo from "./Logo";
 
 const LoginRestaurant = () => {
   const {
@@ -15,7 +17,6 @@ const LoginRestaurant = () => {
     resolver: yupResolver(LoginSchemaRes),
   });
   const router = useRouter();
-  const [ErrorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
     const { username, password } = data;
@@ -29,12 +30,14 @@ const LoginRestaurant = () => {
       });
       // console.log(result);
       if (result?.error !== null) {
-        setErrorMessage(result.error);
+        // console.log(result.error);
+        toast.error("error signing in, try again");
       }
 
       if (result?.status === 200) {
         // console.log(result);
         router.push("/restaurant/dashboard");
+        toast.success("Login Success");
       }
     } catch (error) {
       console.error("Authentication failed:", error);
@@ -53,19 +56,22 @@ const LoginRestaurant = () => {
 
         <main
           aria-label="Main"
-          className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-16 lg:px-16 xl:col-span-8"
+          className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 xl:col-span-8"
         >
-          <div className="md:w-full w-fit h-[25rem]">
+          <div className="md:w-full w-fit">
             <div className="block md:hidden text-center">
               <h1 className="mt-2 text-2xl font-bold sm:text-3xl md:text-4xl">
                 Enter Credentials to Login..
               </h1>
             </div>
 
-            <h1 className="text-center text-3xl text-blue-600 font-bold hidden md:block">
-              Restaurants App
+            <div className="text-center mb-5 hidden md:block">
+              <Logo />
+            </div>
+            <h1 className="text-center text-3xl  font-bold hidden md:block">
+              Restaurant Login
             </h1>
-            <h1 className="text-red-500 text-2xl">{ErrorMessage}</h1>
+
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-8 grid grid-cols-6 gap-6"

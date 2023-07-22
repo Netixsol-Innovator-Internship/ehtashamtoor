@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import Logo from "./Logo";
 
 const LoginCustomer = () => {
   const {
@@ -28,12 +30,14 @@ const LoginCustomer = () => {
         redirect: false,
       });
       if (result?.error !== null) {
-        setErrorMessage(result.error);
+        // setErrorMessage(result.error);
+        toast.error("Error signing in, Try again");
       }
 
       if (result?.status === 200) {
-       // console.log(result);
+        // console.log(result);
         router.push("/customer/homepage");
+        toast.success("Login success");
       }
     } catch (error) {
       console.error("Authentication failed:", error);
@@ -52,16 +56,19 @@ const LoginCustomer = () => {
 
         <main
           aria-label="Main"
-          className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-16 lg:px-16 xl:col-span-8"
+          className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 xl:col-span-8"
         >
-          <div className="md:w-full w-fit h-[25rem]">
+          <div className="md:w-full w-fit">
             <div className="block md:hidden text-center">
               <h1 className="mt-2 text-2xl font-bold sm:text-3xl md:text-4xl">
                 Best Restaurants Around the world
               </h1>
             </div>
 
-            <h1 className="text-center text-3xl text-blue-600 font-bold hidden md:block">
+            <div className="text-center mb-5 hidden md:block">
+              <Logo />
+            </div>
+            <h1 className="text-center md:flex justify-center flex-col text-3xl text-blue-600 font-bold hidden">
               Best Restaurants Around the world
             </h1>
             <h1 className="text-red-500 text-2xl">{ErrorMessage}</h1>

@@ -5,11 +5,12 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { withSwal } from "react-sweetalert2";
+import { toast } from "react-toastify";
 
 const CatgoryPage = ({ swal }) => {
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
-  const [Message, setMessage] = useState("");
+  // const [Message, setMessage] = useState("");
   const [isError, setisError] = useState(false);
   const [editedCategory, setEditedCategory] = useState(null);
   const { data: session } = useSession();
@@ -38,7 +39,8 @@ const CatgoryPage = ({ swal }) => {
       data._id = editedCategory._id;
       const resp = await axios.put("/api/categories", data);
       // console.log(resp.data.success);
-      if (resp.data) {
+      if (resp.data.success) {
+        toast.success(resp.data.message)
         setName("");
         setEditedCategory(null);
         getCategories();
@@ -46,11 +48,13 @@ const CatgoryPage = ({ swal }) => {
     } else {
       const resp = await axios.post("/api/categories", data);
       if (resp.data.success) {
-        setMessage(resp.data.message);
+        // setMessage(resp.data.message);
+        toast.success(resp.data.message);
         setisError(false);
         setName("");
       } else {
-        setMessage(resp.data.message);
+        // setMessage(resp.data.message);
+        toast.error(resp.data.message);
         setisError(true);
       }
       getCategories();
@@ -78,10 +82,12 @@ const CatgoryPage = ({ swal }) => {
           const { _id } = category;
           const resp = await axios.delete("/api/categories?_id=" + _id);
           if (resp.data.success) {
-            setMessage(resp.data.message);
+            // setMessage(resp.data.message);
+            toast.success(resp.data.message);
             setisError(false);
           } else {
-            setMessage(resp.data.message);
+            // setMessage(resp.data.message);
+            toast.error(resp.data.message);
             setisError(true);
           }
           getCategories();
@@ -99,7 +105,7 @@ const CatgoryPage = ({ swal }) => {
     <ProtectedRoute>
       <div className="px-8 mt-5">
         <PageHeader heading="Categories" />
-        <div>
+        {/* <div>
           <h1
             className={`text-2xl ${
               isError ? "text-red-500" : "text-green-500"
@@ -107,7 +113,7 @@ const CatgoryPage = ({ swal }) => {
           >
             {Message}
           </h1>
-        </div>
+        </div> */}
         <label>
           {" "}
           {editedCategory

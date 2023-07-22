@@ -49,6 +49,9 @@ export default async function handle(req, res) {
         name,
       }
     );
+    if (!categoryDoc) {
+      return res.send({ message: "Error updating", success: false });
+    }
     res.send({ categoryDoc, message: "Category updated", success: true });
   }
 }

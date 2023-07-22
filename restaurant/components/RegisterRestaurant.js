@@ -5,10 +5,9 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const RegisterRestaurant = () => {
-  const [Message, setMessage] = useState("");
-  const [IsError, setIsError] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -25,12 +24,11 @@ const RegisterRestaurant = () => {
     const resp = await axios.post("/api/signupRestaurant", data);
     // console.log(resp.data);
     if (resp.data.success) {
-      setIsError(false);
       router.push("/auth/signin/restaurant");
+      toast.success(resp.data.message);
     } else {
-      setIsError(true);
+      toast.error(resp.data.message);
     }
-    setMessage(resp.data.message);
 
     // reset();
   };
@@ -49,11 +47,6 @@ const RegisterRestaurant = () => {
               Please Provide neccessary details
             </p>
 
-            <div className="font-bold text-center mt-3">
-              <h1 className={IsError ? "text-red-500" : "text-green-500"}>
-                {Message}
-              </h1>
-            </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-8 grid grid-cols-6 gap-6"

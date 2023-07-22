@@ -4,6 +4,7 @@ import { signOut, useSession } from "next-auth/react";
 import Logo from "@/components/Logo";
 import AsideNav from "./AsideNav";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Nav() {
   const inactiveLink = "flex gap-2 p-1 pr-10 hover:bg-highlight";
@@ -14,29 +15,18 @@ export default function Nav() {
   const { data: session } = useSession();
   // console.log(session);
 
-  // let restaurantName = "";
-  // let CustomerName = "";
-
-  // if (session?.user?.name) {
-  //   restaurantName =
-  //     session?.user?.name?.toUpperCase()[0] +
-  //     session?.user?.name?.toUpperCase()[1];
-  // } else if (session?.user?.email) {
-  //   CustomerName =
-  //     session?.user?.email?.toUpperCase()[0] +
-  //     session?.user?.email?.toUpperCase()[1];
-  // }
-
   async function logout() {
-    await router.push("/");
     await signOut();
+    await router.push("/");
+    toast.success("User Logged out");
   }
 
   return (
-    <header className="sticky top-0 z-10 bg-white shadow-md flex items-center justify-between md:px-8 px-2 py-2">
+    <header className="sticky top-0 z-10 w-screen bg-white shadow-md flex items-center justify-between md:px-8 px-2">
       {/* <!-- logo --> */}
       <h1 className="mb-0 text-center">
-        <Link href="/">Restaurants</Link>
+        <Logo />
+        {/* <Link href="/">Restaurants</Link> */}
       </h1>
       <div className="md:hidden flex items-center p-4">
         {session?.user && (
@@ -159,13 +149,13 @@ export default function Nav() {
         ) : (
           <>
             <Link
-              className="  py-2 md:px-3 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold  rounded-xl transition duration-200"
+              className="  py-2 md:px-5 bg-blue-500 hover:bg-blue-600 text-lg text-white font-bold  rounded-xl transition duration-200"
               href="/usertype/signin"
             >
               Sign In
             </Link>
             <Link
-              className=" py-2 md:px-3 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+              className=" py-2 md:px-5 bg-blue-500 hover:bg-blue-600 text-lg text-white font-bold rounded-xl transition duration-200"
               href={`/usertype/signup`}
             >
               Sign up

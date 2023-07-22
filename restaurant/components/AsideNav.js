@@ -2,6 +2,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AsideNav = ({ show, setShow }) => {
   const inactiveLink = "flex gap-2 p-1 pr-10 hover:bg-highlight";
@@ -14,6 +15,7 @@ const AsideNav = ({ show, setShow }) => {
   async function logout() {
     await router.push("/");
     await signOut();
+    toast.success("User logged out");
   }
   return (
     <aside
