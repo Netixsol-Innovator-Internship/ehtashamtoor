@@ -24,18 +24,18 @@ export default async function handle(req, res) {
     const { customerId, foodItems, totalPrice } = req.body;
 
     try {
-      let existingOrder = await Order.findOne({ customerId });
+      // let existingOrder = await Order.findOne({ customerId });
 
-      if (existingOrder) {
+      if (false) {
         // If an order with the customerId exists, append the new food items
-        existingOrder.foodItems.push(...foodItems);
-        existingOrder.totalPrice += totalPrice;
-        await existingOrder.save();
-        return res.send({
-          order: existingOrder,
-          message: "Order updated",
-          success: true,
-        });
+        // existingOrder.foodItems.push(...foodItems);
+        // existingOrder.totalPrice += totalPrice;
+        // await existingOrder.save();
+        // return res.send({
+        //   order: existingOrder,
+        //   message: "Order updated",
+        //   success: true,
+        // });
       } else {
         // If no order exists, create a new order
         const newOrder = await Order.create(req.body);

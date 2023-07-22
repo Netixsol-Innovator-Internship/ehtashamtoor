@@ -12,7 +12,7 @@ export default function Nav() {
   const router = useRouter();
   const { pathname } = router;
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
 
   // let restaurantName = "";
   // let CustomerName = "";
@@ -40,8 +40,8 @@ export default function Nav() {
       </h1>
       <div className="md:hidden flex items-center p-4">
         {session?.user && (
-          <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white">
-            {/* {restaurantName || CustomerName} */}
+          <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white capitalize">
+            {session?.user?.name.slice(0, 2)}
           </button>
         )}
 
@@ -144,8 +144,8 @@ export default function Nav() {
       <div className="hidden md:flex gap-2 items-center">
         {session?.user ? (
           <>
-            <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white">
-              {name}
+            <button className="bg-blue-500 text-white h-8 w-8 rounded-full font-bold ring-2 ring-white capitalize">
+              {session?.user?.name.slice(0, 2)}
             </button>
             <button
               className="  py-2 md:px-3 bg-red-500 hover:bg-black text-sm text-white font-bold  rounded-xl transition duration-200"
