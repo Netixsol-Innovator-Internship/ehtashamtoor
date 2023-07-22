@@ -27,13 +27,13 @@ const LoginRestaurant = () => {
         password: password,
         redirect: false,
       });
-      console.log(result);
+      // console.log(result);
       if (result?.error !== null) {
         setErrorMessage(result.error);
       }
 
       if (result?.status === 200) {
-        console.log(result);
+        // console.log(result);
         router.push("/restaurant/dashboard");
       }
     } catch (error) {

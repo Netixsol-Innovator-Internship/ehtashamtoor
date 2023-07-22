@@ -26,7 +26,7 @@ const RegisterRestaurant = () => {
       let resp = await axios.post("/api/signupCustomer", data);
 
       if (resp.data.success) {
-        console.log(resp.data.message);
+        // console.log(resp.data.message);
         router.push("/auth/signin/customer")
       } else {
         console.log(resp.data.message);

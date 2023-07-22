@@ -10,7 +10,7 @@ const Homepage = () => {
 
   const getAllRestaurants = async () => {
     let resp = await axios.get("/api/allrestaurants");
-    console.log(resp.data.allrestaurants);
+    // console.log(resp.data.allrestaurants);
     if (resp.data.success) {
       setRestaurants(resp.data.allrestaurants);
     }

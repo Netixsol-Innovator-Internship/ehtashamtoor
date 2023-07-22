@@ -19,7 +19,7 @@ const LoginCustomer = () => {
 
   const onSubmit = async (data) => {
     const { email, password } = data;
-    console.log(data);
+    // console.log(data);
     try {
       // Use the signIn function to authenticate the user
       const result = await signIn("customer", {
@@ -32,7 +32,7 @@ const LoginCustomer = () => {
       }
 
       if (result?.status === 200) {
-        console.log(result);
+       // console.log(result);
         router.push("/customer/homepage");
       }
     } catch (error) {

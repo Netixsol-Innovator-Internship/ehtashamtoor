@@ -11,8 +11,8 @@ const ordersPage = () => {
 
       if (resp.data.success) {
         setOrders(resp.data.orders);
-        console.log(resp.data.orders);
-        console.log(resp.data.message);
+        // console.log(resp.data.orders);
+        // console.log(resp.data.message);
       } else {
         console.log(resp.data.message);
       }

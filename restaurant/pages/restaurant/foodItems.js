@@ -76,7 +76,7 @@ const FoodItems = ({ swal }) => {
     // console.log(resp.data);
     if (resp.data) {
       setFoods(resp.data);
-      console.log(resp.data);
+      // console.log(resp.data);
     }
   };
   useEffect(() => {
@@ -104,7 +104,7 @@ const FoodItems = ({ swal }) => {
         setImages([...images, imageInfo]);
         setIsLoading(false);
 
-        console.log(images);
+        // console.log(images);
       }
     } catch (error) {
       console.log(error.message);

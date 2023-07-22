@@ -20,7 +20,7 @@ const Delivered = () => {
   const getOrders = async () => {
     const resp = await axios.get(`/api/singleresOrders?status=Delivered`);
     if (resp.data.success) {
-      console.log(resp.data.orders);
+      // console.log(resp.data.orders);
       setOrders(resp.data.orders);
     } else {
       console.log(resp.data.message);

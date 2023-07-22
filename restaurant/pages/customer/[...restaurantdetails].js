@@ -23,7 +23,7 @@ const restaurant = () => {
   const getSingleRestaurant = async () => {
     let resp = await axios.get(`/api/singleRestaurant?id=${restaurantId}`);
     if (resp.data.success) {
-      console.log(resp.data.restaurant);
+      // console.log(resp.data.restaurant);
       setRestaurant(resp.data.restaurant);
     } else {
       console.log(resp.data.message);
@@ -52,7 +52,7 @@ const restaurant = () => {
       Array.from({ length: foodItemsForSelectedCategory.length }, () => "0")
     );
 
-    console.log("fooditemsinCategory", foodItemsForSelectedCategory);
+    // console.log("fooditemsinCategory", foodItemsForSelectedCategory);
   };
 
   const handleOrder = async (e) => {
@@ -72,7 +72,7 @@ const restaurant = () => {
       }
     });
 
-    console.log(orderItems.filter((item) => item));
+    // console.log(orderItems.filter((item) => item));
 
     const data = {
       customerName: session?.user?.name,
@@ -86,10 +86,10 @@ const restaurant = () => {
 
     try {
       const resp = await axios.post("/api/orders", data);
-      console.log(resp.data);
+      // console.log(resp.data);
       if (resp.data.success) {
         router.push("/customer/orders");
-        console.log(resp.data.message);
+        // console.log(resp.data.message);
       } else {
         console.log(resp.data.message);
       }

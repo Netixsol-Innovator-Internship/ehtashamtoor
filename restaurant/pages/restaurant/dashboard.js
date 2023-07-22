@@ -8,7 +8,7 @@ const DashboardPage = () => {
   const { data: session } = useSession();
   const [orders, setOrders] = useState();
   const router = useRouter();
-  console.log(session);
+  // console.log(session);
 
   useEffect(() => {
     if (!session?.user?.role === "restaurant") {
@@ -19,7 +19,7 @@ const DashboardPage = () => {
   const getOrders = async () => {
     const resp = await axios.get("/api/singleresOrders");
     if (resp.data.success) {
-      console.log(resp.data.orders);
+      // console.log(resp.data.orders);
       setOrders(resp.data.orders);
     } else {
       console.log(resp.data.message);
