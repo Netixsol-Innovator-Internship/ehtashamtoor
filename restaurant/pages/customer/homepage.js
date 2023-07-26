@@ -43,7 +43,10 @@ const Homepage = () => {
                   }}
                 >
                   <div className="min-w-[15rem] w-[15rem] sm:w-[22rem] mx-auto">
-                    <img src="/restaurant.jpg" className="h-full w-full" />
+                    <img
+                      src={restaurant?.image?.url || "/restaurant.jpg"}
+                      className="h-full w-full"
+                    />
                     {/* <Image
                       width={100}
                       height={100}

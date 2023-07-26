@@ -1,4 +1,3 @@
-import { RegisterRes } from "@/Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,9 +5,14 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { RegisterRes } from "@/Schema";
+import { Spinner } from "flowbite-react";
 
 const RegisterRestaurant = () => {
+  let [imageInfo, setImageInfo] = useState({});
+  let [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -20,9 +24,18 @@ const RegisterRestaurant = () => {
 
   const onSubmit = async (data) => {
     const { name, email, password, country, city } = data;
+    // console.log(imageInfo);
+    data = {
+      name,
+      email,
+      password,
+      country,
+      city,
+      image: imageInfo,
+    };
 
     const resp = await axios.post("/api/signupRestaurant", data);
-    // console.log(resp.data);
+    console.log(resp.data);
     if (resp.data.success) {
       router.push("/auth/signin/restaurant");
       toast.success(resp.data.message);
@@ -31,6 +44,34 @@ const RegisterRestaurant = () => {
     }
 
     // reset();
+  };
+
+  const uploadFile = async (e) => {
+    setIsLoading(true);
+    // console.log(e.target?.files[0]);
+
+    let data = new FormData();
+    data.append("file", e.target?.files[0]);
+
+    data.append("upload_preset", "restaurant");
+
+    try {
+      const resp = await axios.post(process.env.NEXT_PUBLIC_CLOUD_LINK, data);
+      console.log(resp);
+      if (resp.data) {
+        imageInfo = {
+          public_id: resp.data.public_id,
+          url: resp.data.secure_url,
+        };
+        setImageInfo(imageInfo);
+
+        setIsLoading(false);
+
+        console.log(imageInfo);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <section className=" pb-2">
@@ -127,8 +168,31 @@ const RegisterRestaurant = () => {
                   </span>
                 )}
               </div>
+              <div className="col-span-6 h-[5.4rem]">
+                <label htmlFor="file" className="block text-sm font-semibold  ">
+                  Restaurant Image
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  accept=".jpg, .jpeg, .png .webp .svg"
+                  name="file"
+                  required
+                  // {...register("file")}
+                  onChange={(e) => {
+                    uploadFile(e);
+                  }}
+                  className="mt-1 w-full rounded-md bg-white text-lg text-gray-700 p-1"
+                />
+                {isLoading && <Spinner />}
+                {errors.file && (
+                  <span className="text-red-600 md:text-[15px] text-sm">
+                    {errors.file.message}
+                  </span>
+                )}
+              </div>
 
-              <div className="col-span-6 h-[4rem]">
+              <div className="col-span-6 h-[4rem] mt-2">
                 <label
                   htmlFor="Password"
                   className="block text-sm font-semibold  "

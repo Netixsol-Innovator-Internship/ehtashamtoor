@@ -21,6 +21,14 @@ const restaurantSchema = new Schema({
   city: {
     type: String,
   },
+  image: {
+    public_id: {
+      type: String,
+    },
+    url: {
+      type: String,
+    },
+  },
   foodItems: [
     {
       name: {

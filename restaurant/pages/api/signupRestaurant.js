@@ -16,8 +16,8 @@ export default async function handle(req, res) {
   }
 
   if (method === "POST") {
-    const { name, email, password, country, city } = req.body;
-    // console.log(req.body);
+    const { name, email, password, country, city, image } = req.body;
+    // console.log(image);
 
     // check if user is there with the email
     const restaurantExists = await Restaurant.findOne({ email });
@@ -37,8 +37,11 @@ export default async function handle(req, res) {
         password: hasedPass,
         country,
         city,
+        image,
       });
       await RestaurantObj.save();
+
+      // console.log(RestaurantObj);
 
       res.send({
         RestaurantObj,
