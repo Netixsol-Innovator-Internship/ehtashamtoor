@@ -1,5 +1,5 @@
+import CustomerProtectedRoute from "@/components/CustomerProtectedRoute";
 import PageHeader from "@/components/PageHeader";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -23,7 +23,7 @@ const OrdersPage = () => {
   }, []);
 
   return (
-    <ProtectedRoute>
+    <CustomerProtectedRoute>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8 mt-5 px-2">
@@ -120,7 +120,7 @@ const OrdersPage = () => {
           </div>
         </div>
       </div>
-    </ProtectedRoute>
+    </CustomerProtectedRoute>
   );
 };
 

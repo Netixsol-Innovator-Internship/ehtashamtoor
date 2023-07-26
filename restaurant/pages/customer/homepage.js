@@ -1,11 +1,11 @@
 import PageHeader from "@/components/PageHeader";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import image from "../../public/restaurant.jpg";
+import CustomerProtectedRoute from "@/components/CustomerProtectedRoute";
 
 const Homepage = () => {
   const router = useRouter();
@@ -27,7 +27,7 @@ const Homepage = () => {
     router.push(`/customer/${restaurantName}/${id}`);
   };
   return (
-    <ProtectedRoute>
+    <CustomerProtectedRoute>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8 mt-5 px-2">
@@ -45,37 +45,34 @@ const Homepage = () => {
                   <div className="min-w-[15rem] w-[15rem] sm:w-[22rem] mx-auto">
                     <img
                       src={restaurant?.image?.url || "/restaurant.jpg"}
-                      className="h-full w-full"
+                      className="h-[14rem] w-full"
                     />
-                    {/* <Image
-                      width={100}
-                      height={100}
-                      alt="restaurant image"
-                      src={image}
-                    /> */}
                     <div className="p-4 sm:p-6">
                       <p className="font-bold text-gray-700 capitalize text-[22px] leading-7 mb-1">
                         {restaurant.name}
                       </p>
-                      <p>
-                        <span className="opacity-60">
-                          Our specialized food categories:
-                        </span>{" "}
-                        &nbsp;
-                        {restaurant.categories.map((category, index, arr) => {
-                          //   console.log(category);
-                          return (
-                            <span
-                              key={index}
-                              className="text-black font-bold text-lg capitalize opacity-90"
-                            >
-                              {category.name}
-                              {index === arr.length - 1 ? "" : ","}
-                              &nbsp;
-                            </span>
-                          );
-                        })}
-                      </p>
+                      {restaurant?.categories.length > 0 && (
+                        <p>
+                          <span className="opacity-60">
+                            Our specialized food categories:
+                          </span>{" "}
+                          &nbsp;
+                          {restaurant.categories.map((category, index, arr) => {
+                            //   console.log(category);
+                            return (
+                              <span
+                                key={index}
+                                className="text-black font-bold text-lg capitalize opacity-90"
+                              >
+                                {category.name}
+                                {index === arr.length - 1 ? "" : ","}
+                                &nbsp;
+                              </span>
+                            );
+                          })}
+                        </p>
+                      )}
+
                       <p className="text-[#7C7C80] font-[15px] mt-6">
                         Our food is made with choosen methods with extra kick of
                         spices, which are mostly liked by people worldwide
@@ -97,7 +94,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-    </ProtectedRoute>
+    </CustomerProtectedRoute>
   );
 };
 

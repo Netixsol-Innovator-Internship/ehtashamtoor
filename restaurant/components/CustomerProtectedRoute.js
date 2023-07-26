@@ -3,35 +3,36 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { BeatLoader } from "react-spinners";
 
-const ProtectedRoute = ({ children }) => {
+const CustomerProtectedRoute = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { data: session, status } = useSession();
   const router = useRouter();
   // console.log(session?.user);
 
   useEffect(() => {
+    console.log(status);
     if (session?.user?.role === undefined && status === "unauthenticated") {
       router.push("/usertype/signin");
     }
     console.log(session?.user?.role);
-    //                                       for CUSTOMER, ACCESSING RESTAURANT ROUTES
+    //                                     for RESTAURANT, ACCESSING CUSTOMER ROUTES
     if (
-      session?.user?.role === "Customer" &&
-      router.pathname.includes("/restaurant/")
+      session?.user?.role === "restaurant" &&
+      router.pathname.includes("/customer/")
     ) {
-      console.log("customer mein");
-      router.push("/customer/homepage");
+      console.log("restaurant mein");
+      router.push("/restaurant/dashboard");
       setIsLoading(false);
       return;
     }
 
-    // for restaurant routes
+    // for customer routes
     if (
-      session?.user?.role === "restaurant" &&
-      router.pathname.includes("/restaurant/")
+      session?.user?.role === "Customer" &&
+      router.pathname.includes("/customer/")
     ) {
       console.log(session?.user);
-      console.log("res res");
+      console.log("customer customer");
       setIsLoading(false);
       return;
     }
@@ -48,4 +49,4 @@ const ProtectedRoute = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default ProtectedRoute;
+export default CustomerProtectedRoute;

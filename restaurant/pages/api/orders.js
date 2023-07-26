@@ -15,9 +15,9 @@ export default async function handle(req, res) {
       "foodItems.foodItem"
     );
 
-    if (!orders) res.send({ message: "cannot get all orders", success: false });
+    if (!orders) return res.send({ message: "cannot get all orders", success: false });
 
-    res.send({ orders, message: "", success: true });
+    return res.send({ orders, message: "", success: true });
   }
 
   if (method === "POST") {
