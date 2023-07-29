@@ -6,6 +6,7 @@ export default function Home() {
   const { data: session } = useSession();
   return (
     <Layout>
+      
       <Toaster position="bottom-center" />
       <div className="text-blue-900 flex justify-between">
         <h2>
