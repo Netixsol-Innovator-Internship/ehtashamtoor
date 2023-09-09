@@ -1,10 +1,5 @@
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import Footer from "./Footer";
 import { useRouter } from "next/router";
-import { getToken } from "@/utils/getToken";
-import { User } from "@/types";
-import Link from "next/link";
 import Typewriter from "typewriter-effect";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,10 +16,31 @@ import EventCard from "./EventCard/EventCard";
 const HomeComponent = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [bookings, setbookings] = useState([]);
   const router = useRouter();
   const userFromLocalStorage = localStorage.getItem("user");
   const userHa =
     userFromLocalStorage !== null ? JSON.parse(userFromLocalStorage) : null;
+
+  const fetchBookings = async () => {
+    if (!userHa) {
+      return null;
+    }
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND}/bookings/${userHa.userId}`
+      );
+      if (response.data.success) {
+        setbookings(response.data.bookings);
+        // console.log(response.data);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("error fetching bookings");
+      console.error("Error fetching bookings:", error);
+    }
+  };
 
   const fetchAllEvents = async () => {
     try {
@@ -44,6 +60,7 @@ const HomeComponent = () => {
   useEffect(() => {
     setLoading(true);
     fetchAllEvents();
+    fetchBookings();
   }, []);
 
   return (
@@ -113,14 +130,23 @@ const HomeComponent = () => {
         }}
         pagination={false}
         modules={[EffectCoverflow, Pagination, Autoplay]}
-        className="mySwiper max-w-4xl"
-        // className="flex flex-wrap justify-center gap-2 mt-4"
+        className="swiper max-w-5xl"
       >
         {events &&
-          events.map((event, index) => {
+          events.map((event: any, index) => {
+            const isEventBooked = bookings.some(
+              (booking: any) =>
+                booking.event._id === event._id &&
+                booking.user._id === userHa.userId
+            );
             return (
               <SwiperSlide>
-                <EventCard key={index} event={event} swiper={true} />
+                <EventCard
+                  key={index}
+                  event={event}
+                  swiper={true}
+                  isbooked={isEventBooked}
+                />
               </SwiperSlide>
             );
           })}

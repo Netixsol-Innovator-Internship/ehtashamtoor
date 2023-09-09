@@ -32,7 +32,7 @@ const userDashboardPage = () => {
       if (response.data.success) {
         setevents(response.data.events);
         setloading(false);
-        console.log(response.data.events);
+        // console.log(response.data.events);
       }
     } catch (error) {
       console.error("Error fetching events:", error);

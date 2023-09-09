@@ -38,7 +38,7 @@ const eventIdPage = () => {
         const attendeesResponse = await axiosInstance.get(
           `/bookings/${eventId}/attendees`
         );
-        console.log(attendeesResponse.data);
+        // console.log(attendeesResponse.data);
         if (attendeesResponse.data && attendeesResponse.data.success) {
           setAttendees(attendeesResponse.data.attendees);
         }

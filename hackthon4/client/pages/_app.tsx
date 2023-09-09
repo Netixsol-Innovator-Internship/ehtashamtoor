@@ -11,12 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider enableSystem={true} attribute="class">
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={myStore}> */}
           <Toaster />
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        {/* </PersistGate> */}
       </Provider>
     </ThemeProvider>
   );

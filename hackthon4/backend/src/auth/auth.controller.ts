@@ -20,7 +20,6 @@ import { User } from 'src/schemas/user.schema';
 import { AuthGuard } from '@nestjs/passport';
 import { AdminGuard } from 'src/middlewares/jwt.admin.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerConfig } from 'multer.config';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Controller('auth')

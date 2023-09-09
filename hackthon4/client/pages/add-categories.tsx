@@ -44,7 +44,7 @@ const addCategoriesPage = () => {
       const response = await axiosInstance.post("/categories/new", { title });
       if (response.data.success) {
         setTitle("");
-        console.log(response.data);
+        // console.log(response.data);
         toast.success(response.data.message);
         fetchCategories();
       } else {

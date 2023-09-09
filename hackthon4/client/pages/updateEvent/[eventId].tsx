@@ -18,7 +18,7 @@ const UpdateEventPage = () => {
       const axiosInstance = getToken();
       const response = await axiosInstance.get(`/events/${eventId}`);
       if (response.data) {
-        console.log(response.data.eventFound);
+        // console.log(response.data.eventFound);
         seteventData(response.data.eventFound);
         setloading(false);
       }

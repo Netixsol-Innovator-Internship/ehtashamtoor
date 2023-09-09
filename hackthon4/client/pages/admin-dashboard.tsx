@@ -74,7 +74,7 @@ const adminDashboardPage = () => {
   useEffect(() => {
     if (selectedCategory || selectedStatus) {
       setloading(true);
-      console.log(selectedCategory, selectedStatus);
+      // console.log(selectedCategory, selectedStatus);
       fetchBlogsByFilters(selectedCategory, selectedStatus);
     } else {
       setloading(true);

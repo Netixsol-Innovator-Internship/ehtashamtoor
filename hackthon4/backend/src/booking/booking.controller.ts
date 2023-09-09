@@ -12,18 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Blog } from 'src/schemas/blog.schema';
-import { CreateBlogDto } from 'src/dto/create-blog.dto';
-import { UpdateBlogDto } from 'src/dto/update-blog.dto';
-import { AdminGuard } from 'src/middlewares/jwt.admin.guard';
-import { WriterAdminGuard } from 'src/middlewares/jwt.writerAdmin.guard';
-import { WriterGuard } from 'src/middlewares/jwt.writer.guard';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { multerConfig } from 'multer.config';
 import { BookingService } from './booking.service';
-import { CreateEventDto } from 'src/dto/create-event.dto';
-import { Eventt } from 'src/schemas/event.schema';
-import { UpdateEventDto } from 'src/dto/update-event.dto';
 import { CreateBookingDto } from 'src/dto/create-booking.dto';
 import { Booking } from 'src/schemas/Booking.Schema';
 import { UpdateBookingDto } from 'src/dto/update-booking.dto';

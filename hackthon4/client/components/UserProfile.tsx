@@ -31,11 +31,9 @@ const UserProfile = (Props: userLocal) => {
         // console.log(userInfo);
         let userDoc = userInfo;
         setUser(userDoc);
-        toast.success("Profile Picture updated");
-        console.log(userDoc);
+        // console.log(userDoc);
       } else {
         console.error("User information not found.");
-        toast.error(response.data.message);
         return null;
       }
     } catch (error) {
@@ -67,9 +65,11 @@ const UserProfile = (Props: userLocal) => {
           }
         );
 
-        if (response.data) {
-          toast.success("Profile picture uplaoded success");
+        if (response.data.success) {
+          toast.success(response.data.message);
           getUserInfo();
+        } else {
+          toast.error(response.data.message);
         }
       } catch (error) {
         console.error("Error updating profile picture:", error);

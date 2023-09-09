@@ -21,7 +21,7 @@ const Signup = () => {
 
   const onsubmit = async (data: signupData) => {
     const { username, email, password } = data;
-    console.log(data);
+    // console.log(data);
 
     data = {
       username,
@@ -42,7 +42,7 @@ const Signup = () => {
       }
     } catch (error) {
       const knownError = error as Error;
-      console.log(knownError.message);
+      // console.log(knownError.message);
       toast.error(knownError.message);
     }
   };

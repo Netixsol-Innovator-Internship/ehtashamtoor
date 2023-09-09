@@ -21,7 +21,6 @@ import { AdminGuard } from 'src/middlewares/jwt.admin.guard';
 import { WriterAdminGuard } from 'src/middlewares/jwt.writerAdmin.guard';
 import { WriterGuard } from 'src/middlewares/jwt.writer.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerConfig } from 'multer.config';
 import { EventService } from './event.service';
 import { CreateEventDto } from 'src/dto/create-event.dto';
 import { Eventt } from 'src/schemas/event.schema';
@@ -156,9 +155,8 @@ export class EventController {
 
         return updatedEvent;
       } else {
-        console.log(event.thumbnail.path);
-        return;
         // If thumbnail is not provided (using existing image details)
+        event.thumbnail = JSON.parse(`${event.thumbnail}`);
         return this.eventService.updateEvent(id, event);
       }
     } catch (error) {

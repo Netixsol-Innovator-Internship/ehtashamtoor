@@ -65,29 +65,30 @@ h6 {
 @media only screen and (min-width: 1280px) {
   .swiper .swiper-slide {
     width: 340px;
-    height: auto;
   }
 }
 @media only screen and (max-width: 1024px) {
+  .swiper {
+  }
   .swiper .swiper-slide {
-    width: 300px;
-    height: auto;
+    width: 300px !important;
   }
 }
 @media only screen and (max-width: 400px) {
   .swiper {
-    width: 250px;
-    height: auto;
+    width: 300px;
   }
   .swiper .swiper-slide {
-    width: 250px;
-    height: auto;
+    width: 240px;
   }
 }
-
-.swiper .swiper-slide img {
-  display: block;
-  width: 100%;
+@media only screen and (max-width: 300px) {
+  .swiper {
+    width: 240px;
+  }
+  .swiper .swiper-slide {
+    width: 240px !important;
+  }
 }
 
 /*Styling for pagination*/

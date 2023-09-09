@@ -44,7 +44,7 @@ const Signin: NextPage = () => {
       }
     } catch (error) {
       const knownError = error as Error;
-      console.log(knownError.message);
+      // console.log(knownError.message);
       toast.error(knownError.message);
     }
   };

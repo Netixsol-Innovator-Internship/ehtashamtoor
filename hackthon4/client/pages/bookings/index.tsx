@@ -5,6 +5,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import { formatDateToString } from "@/utils/formatDate";
 import { getToken } from "@/utils/getToken";
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsFillTrash3Fill } from "react-icons/bs";
@@ -32,7 +33,7 @@ const bookingsPage = () => {
       );
       if (response.data.success) {
         setbookings(response.data.bookings);
-        console.log(response.data);
+        // console.log(response.data);
       } else {
         toast.error(response.data.message);
       }
@@ -57,7 +58,7 @@ const bookingsPage = () => {
       const response = await axiosInstance.post("/bookings/new", { ticket });
       if (response.data.success) {
         setticket("");
-        console.log(response.data);
+        // console.log(response.data);
         toast.success(response.data.message);
         fetchBookings();
       } else {
@@ -129,63 +130,74 @@ const bookingsPage = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking: any) => (
-              <tr key={booking._id}>
-                <td className="border sm:p-5 sm:px-10 font-bold">
-                  {booking.event.title}
-                </td>
-                <td className="border p-2">
-                  {formatDateToString(booking.event.date)}
-                </td>
-                <td className="border p-2">{booking.tickets}</td>
-                <td className="border p-2">
-                  <button
-                    className="bg-red-500 hover:bg-red-700 text-white text-[12px] sm:text-xl px-2 py-1 rounded mb-1 sm:mr-2"
-                    onClick={() => handleDeletebooking(booking._id)}
-                  >
-                    <BsFillTrash3Fill />
-                  </button>
-                  <button
-                    className="bg-primary hover:bg-secondary text-white text-[12px] sm:text-xl px-2 py-1 rounded"
-                    onClick={() => handleEditbooking(booking)}
-                  >
-                    <BsPencilSquare />
-                  </button>
+            {bookings.length >= 1 ? (
+              bookings.map((booking: any) => (
+                <tr key={booking._id}>
+                  <td className="border sm:p-5 sm:px-10 font-bold">
+                    {booking.event.title}
+                  </td>
+                  <td className="border p-2">
+                    {formatDateToString(booking.event.date)}
+                  </td>
+                  <td className="border p-2">{booking.tickets}</td>
+                  <td className="border p-2">
+                    <button
+                      className="bg-red-500 hover:bg-red-700 text-white text-[12px] sm:text-xl px-2 py-1 rounded mb-1 sm:mr-2"
+                      onClick={() => handleDeletebooking(booking._id)}
+                    >
+                      <BsFillTrash3Fill />
+                    </button>
+                    <button
+                      className="bg-primary hover:bg-secondary text-white text-[12px] sm:text-xl px-2 py-1 rounded"
+                      onClick={() => handleEditbooking(booking)}
+                    >
+                      <BsPencilSquare />
+                    </button>
 
-                  {editingBooking && (
-                    <div className="fixed inset-0 flex items-center justify-center z-30 bg-black bg-opacity-50">
-                      <div className="bg-white p-8 rounded-md">
-                        <h2 className="text-black">Select Number of Tickets</h2>
-                        <div className="text-center">
-                          <input
-                            type="number"
-                            value={newTicket}
-                            onChange={(e) =>
-                              setnewTicket(parseInt(e.target.value))
-                            }
-                            className="border-2 border-black bg-white my-5 text-black px-2 py-2"
-                          />
-                        </div>
-                        <div className="flex justify-center gap-2">
-                          <button
-                            onClick={confirmUpdate}
-                            className="text-red-500 mr-4 hover:text-red-700"
-                          >
-                            Update
-                          </button>
-                          <button
-                            onClick={cancelUpdate}
-                            className="text-gray-500 mr-4 hover:text-gray-700"
-                          >
-                            Cancel
-                          </button>
+                    {editingBooking && (
+                      <div className="fixed inset-0 flex items-center justify-center z-30 bg-black bg-opacity-50">
+                        <div className="bg-white p-8 rounded-md">
+                          <h2 className="text-black">
+                            Select Number of Tickets
+                          </h2>
+                          <div className="text-center">
+                            <input
+                              type="number"
+                              value={newTicket}
+                              onChange={(e) =>
+                                setnewTicket(parseInt(e.target.value))
+                              }
+                              className="border-2 border-black bg-white my-5 text-black px-2 py-2"
+                            />
+                          </div>
+                          <div className="flex justify-center gap-2">
+                            <button
+                              onClick={confirmUpdate}
+                              className="text-red-500 mr-4 hover:text-red-700"
+                            >
+                              Update
+                            </button>
+                            <button
+                              onClick={cancelUpdate}
+                              className="text-gray-500 mr-4 hover:text-gray-700"
+                            >
+                              Cancel
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))}
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <div>
+                <h1>No Bookings yet</h1>
+                <Link href={"events"} className="text-primary font-bold">
+                  Go to events
+                </Link>
+              </div>
+            )}
           </tbody>
         </table>
       </div>

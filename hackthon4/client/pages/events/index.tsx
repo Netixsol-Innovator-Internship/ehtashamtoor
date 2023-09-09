@@ -48,7 +48,7 @@ export default function Events({ headCol, items }: PropTypes) {
         setevents(response.data);
 
         // setLoading(false);
-        console.log(response.data);
+        // console.log(response.data);
       }
     } catch (error) {
       console.error("Error fetching events with search:", error);
@@ -67,7 +67,7 @@ export default function Events({ headCol, items }: PropTypes) {
       );
       if (response.data.success) {
         setbookings(response.data.bookings);
-        console.log(response.data);
+        // console.log(response.data);
       } else {
         toast.error(response.data.message);
       }

@@ -98,8 +98,8 @@ function NavBar(Props: PropTypes) {
     checkToken();
   });
   return (
-    <nav className="w-full bg-gradient-to-r to-[#1C0E59] from-[#33146D]  sticky py-2 top-0 z-50">
-      <div className="container justify-between mx-auto md:items-center md:flex">
+    <nav className=" bg-gradient-to-r to-[#1C0E59] from-[#33146D]  sticky py-2 top-0 z-50">
+      <div className="container mx-auto justify-between md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             {/* LOGO */}

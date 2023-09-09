@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Blog.module.css";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
@@ -138,7 +138,15 @@ const EventCard = ({ event, swiper = false, isbooked, fetchBookings }: any) => {
         )}
         <div className={`${styles.shortInfo} flex-wrap`}>
           <div className={styles.aAuthor}>
-            <img className={styles.imageIcon1} alt="" src="./1st.jpg" />
+            <img
+              className={styles.imageIcon1}
+              alt=""
+              src={
+                !event.user.profilePicture
+                  ? "/profile-icon-9.png"
+                  : event.user.profilePicture.path
+              }
+            />
             <div className={styles.author}>
               {capitalizeFirstLetter(event.user.username)}
             </div>

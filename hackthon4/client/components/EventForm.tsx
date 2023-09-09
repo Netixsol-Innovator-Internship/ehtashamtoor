@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NewBlog } from "@/Schema";
+import { NewEvent } from "@/Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -56,12 +56,13 @@ export const DynamicEditor: React.FC<DynamicEditorProps> = ({
 };
 
 const EventForm = ({ isEditing = false, eventData = {} }: any) => {
-  // console.log("blogform--------", eventData);
+  // console.log("eventform--------", eventData);
   const [content, setcontent] = useState(eventData.description || "");
   const [picError, setpicError] = useState("");
   const [loading, setloading] = useState(false);
   const [showOldImage, setshowOldImage] = useState(isEditing ? true : false);
-  const [thumbnailPic, setThumbnail] = useState<File | null>(null);
+  // console.log(showOldImage);
+  const [thumbnailPic, setThumbnailPic] = useState<File | null>(null);
   const [thumbnail, setthumbnail] = useState<{ path: string } | null>(
     eventData.thumbnail || null
   );
@@ -73,7 +74,7 @@ const EventForm = ({ isEditing = false, eventData = {} }: any) => {
     formState: { errors },
     setValue,
   } = useForm({
-    resolver: yupResolver(NewBlog),
+    resolver: yupResolver(NewEvent),
   });
 
   useEffect(() => {
@@ -90,15 +91,17 @@ const EventForm = ({ isEditing = false, eventData = {} }: any) => {
 
   const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files && e.target.files[0];
-    setThumbnail(selectedFile);
+    setThumbnailPic(selectedFile);
     if (selectedFile) {
       setpicError("");
       // Create a temporary URL for the selected image
       const imageUrl = URL.createObjectURL(selectedFile);
       setthumbnailURL(imageUrl);
       setshowOldImage(false);
+      setthumbnail({ path: "sdfas" });
     } else {
       setthumbnail(eventData.thumbnail || null);
+      setshowOldImage(false);
     }
   };
 
@@ -110,8 +113,7 @@ const EventForm = ({ isEditing = false, eventData = {} }: any) => {
         return setpicError("Cover Image is required");
       }
     }
-    // data.date = formatDateToString(data.date);
-    // console.log(data);
+    // console.log(data.date);
 
     const Data = new FormData();
     Data.append("title", data.title);
@@ -136,7 +138,7 @@ const EventForm = ({ isEditing = false, eventData = {} }: any) => {
       const axiosInstance = getToken();
       const resp = await axiosInstance.put(`/events/${eventData._id}`, Data);
       if (resp.data.success) {
-        console.log(resp.data);
+        // console.log(resp.data);
         toast.success(resp.data.message);
         router.push("/user-dashboard");
       } else {
@@ -202,7 +204,7 @@ const EventForm = ({ isEditing = false, eventData = {} }: any) => {
         </div>
         {thumbnail && (
           <img
-            src={showOldImage ? `${thumbnail.path}` : thumbnailURL}
+            src={showOldImage ? `${thumbnail?.path}` : thumbnailURL}
             alt="Cover Image"
             className="w-48 shadow-md shadow-black dark:shadow-gray-600 my-2 block mx-auto"
           />

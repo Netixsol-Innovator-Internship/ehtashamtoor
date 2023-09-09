@@ -186,8 +186,7 @@ export class EventService {
     id: string,
     event: UpdateEventDto,
   ): Promise<{ success?: boolean; message?: string }> {
-    // console.log(JSON.parse(event.thumbnail))
-    // console.log(event.thumbnail.path);
+    // console.log(event.thumbnail);
 
     const editEvent = await this.EventModel.findByIdAndUpdate(id, event, {
       new: true,
@@ -199,7 +198,6 @@ export class EventService {
         success: false,
         message: 'Error Updating Event',
       };
-      // throw new NotFoundException('Error updating blog');
     }
 
     return {

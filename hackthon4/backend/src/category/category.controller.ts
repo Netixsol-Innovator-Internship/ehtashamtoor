@@ -21,7 +21,6 @@ import { AdminGuard } from 'src/middlewares/jwt.admin.guard';
 import { WriterAdminGuard } from 'src/middlewares/jwt.writerAdmin.guard';
 import { WriterGuard } from 'src/middlewares/jwt.writer.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerConfig } from 'multer.config';
 import { CreateCategoryDto } from 'src/dto/create-category.dto';
 import { Category } from 'src/schemas/category.schema';
 import { UpdateCategoryDto } from 'src/dto/update-category.dto';

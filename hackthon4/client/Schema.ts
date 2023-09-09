@@ -41,7 +41,7 @@ export const LoginSchema = Yup.object({
     .min(6, "Password must be more than 6 characters"),
 });
 
-export const NewBlog = Yup.object({
+export const NewEvent = Yup.object({
   title: Yup.string()
     .required("Event title is required")
     .min(5, "Please enter at least 5 characters")
